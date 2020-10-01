@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OtherComponent } from './other/other.component';
 import { HealthComponent } from './modules/components/health/health.component';
+import { CardComponent } from './modules/components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OtherComponent,
-    HealthComponent
+    HealthComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

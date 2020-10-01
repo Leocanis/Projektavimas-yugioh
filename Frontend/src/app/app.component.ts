@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ICard } from './shared/models/card';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Message } from './shared/models/message';
 import { ClickService } from './core/services/click.service';
@@ -9,10 +10,12 @@ import { SignalRService } from './core/hubs/signalr.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit {
   private signalRSubscription: Subscription;
 
   public content: Message = null;
+  private card1: ICard;
+  private card2: ICard;
 
   constructor(private signalrService: SignalRService,
               private clickService: ClickService) {
@@ -22,6 +25,11 @@ export class AppComponent implements OnDestroy {
     });
 
   }
+  ngOnInit(): void {
+    this.card1 = { attack: 100} ;
+    this.card2 = { attack: 150} ;
+  }
+
   ngOnDestroy(): void {
     this.signalrService.disconnect();
     this.signalRSubscription.unsubscribe();

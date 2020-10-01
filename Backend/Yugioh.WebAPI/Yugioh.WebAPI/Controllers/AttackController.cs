@@ -12,23 +12,22 @@ namespace Yugioh.WebAPI.Controllers
     [Route("api/attack")]
     public class AttackController : Controller
     {
-        private readonly IHubContext<HealthHub> _healthHubContext;
-        private static Health _health = new Health { HealthCount = 8000 };
+        private readonly IHubContext<HealthHub> _healthHubContext;        
         public AttackController(IHubContext<HealthHub> healthHubContext)
         {
             _healthHubContext = healthHubContext;
         }
 
-        [HttpGet]
+        [HttpGet]        
         public IActionResult Attack(int damage)
         {
             try
             {
-                _health.HealthCount -= damage;
+                HealthController._health.HealthCount -= damage;
                 _healthHubContext.Clients.All.SendAsync("SendHealth",
                     new
                     {
-                        health = _health
+                        health = HealthController._health
                     });
 
                 return Ok();
@@ -37,18 +36,6 @@ namespace Yugioh.WebAPI.Controllers
             {
                 return BadRequest();
             }
-        }
-
-        public IActionResult GetHealth()
-        {
-            try
-            {                
-                return Ok(_health);
-            }
-            catch
-            {
-                return BadRequest();
-            }
-        }
+        }        
     }
 }
