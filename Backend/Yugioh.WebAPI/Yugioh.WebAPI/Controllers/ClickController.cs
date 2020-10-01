@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using WebApi.Hubs;
+using Yugioh.Services.Hubs;
 
-namespace WebApi.Controllers
+namespace Yugioh.WebAPI.Controllers
 {
     [Route("api/click")]
     public class ClickController : Controller
@@ -18,12 +14,7 @@ namespace WebApi.Controllers
         {
             _hubContext = hubContext;
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
-        [HttpGet]
         public IActionResult Click()
         {
             count++;
@@ -39,6 +30,5 @@ namespace WebApi.Controllers
 
             return Ok();
         }
-
     }
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
 import { Subject, Observable } from 'rxjs';
+import { Message } from 'src/app/shared/models/message';
 import { environment } from 'src/environments/environment';
-import { Message } from '../message';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class SignalRService {
   constructor() {
     this.message$ = new Subject<Message>();
     this.connection = new signalR.HubConnectionBuilder()
-    .withUrl(environment.hubUrl)
+    .withUrl(environment.hubUrl + 'notificationHub')
     .build();
 
     this.connect();
@@ -35,6 +35,4 @@ export class SignalRService {
   public disconnect() {
     this.connection.stop();
   }
-
-  
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  hubUrl: 'http://localhost:5000/notificationHub'
+  hubUrl: 'http://localhost:5000/'
 };
 
 /*

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
-import { SignalRService } from '../services/signalr.service';
-import { Message } from '../message';
+import { SignalRService } from '../core/hubs/signalr.service';
+import { Message } from '../shared/models/message';
 
 @Component({
   selector: 'app-other',
