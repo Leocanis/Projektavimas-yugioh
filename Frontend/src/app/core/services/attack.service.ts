@@ -10,8 +10,8 @@ export class AttackService {
 
     private Url = `http://localhost:5000/api/attack`;
 
-    Attack(damage: number) {
+    Attack(playerId: number, damage: number) {
 
-        this.http.get(this.Url + '?damage=' + damage.toString()).subscribe();
+        this.http.get(this.Url + '?playerId=' + playerId + '&damage=' + damage.toString()).subscribe();
     }
 }

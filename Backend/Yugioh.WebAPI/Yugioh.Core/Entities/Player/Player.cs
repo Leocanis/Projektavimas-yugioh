@@ -7,6 +7,7 @@ namespace Yugioh.Core.Entities.PlayerNs
 {
     public class Player
     {
+        public int Id { get; set; }
         public Health PlayerHealth { get; set; }
     }
 }

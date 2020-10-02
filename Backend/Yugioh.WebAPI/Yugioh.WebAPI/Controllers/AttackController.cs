@@ -19,15 +19,17 @@ namespace Yugioh.WebAPI.Controllers
         }
 
         [HttpGet]        
-        public IActionResult Attack(int damage)
+        public IActionResult Attack(int playerId, int damage)
         {
             try
             {
-                HealthController._health.HealthCount -= damage;
+                var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
+                player.PlayerHealth.HealthCount -= damage;
                 _healthHubContext.Clients.All.SendAsync("SendHealth",
                     new
                     {
-                        health = HealthController._health
+                        playerId = player.Id,
+                        health = player.PlayerHealth
                     });
 
                 return Ok();

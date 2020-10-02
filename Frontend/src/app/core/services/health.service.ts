@@ -13,13 +13,11 @@ export class HealthService {
 
   private Url = `http://localhost:5000/api/health/getHealth`;
 
-  getHealth(): Observable<IHealth> {
-    const res = this.http.get<IHealth>(this.Url)
+  getHealth(playerId: number): Observable<IHealth> {
+    const res = this.http.get<IHealth>(this.Url + '?playerId=' + playerId)
       .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data)))
-      );
-    console.log('Kreipiuosi health');
-    console.log(res);
+        tap(data => { }));
+
     return res;
   }
 }

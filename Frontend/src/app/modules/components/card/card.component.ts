@@ -13,6 +13,6 @@ export class CardComponent {
     @Input() card: ICard;
 
     onAttack(): void {
-        this.attackService.Attack(this.card.attack);
+        this.attackService.Attack(this.card.playerId, this.card.attack);
     }
 }

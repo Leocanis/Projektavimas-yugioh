@@ -1,74 +1,72 @@
-
 <div class="container">
   <div class="row">
-    <div class="col6-sm border langelis">
-      1
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col6-sm border langelis">
-      <app-card [card] = "card1"></app-card>
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
   </div>
   <div class="row">
-    <div>
-      <p>Stats</p>
-      <app-health></app-health>
+    <div class="col2-lg border langelis">
+      <app-card [card]="card1"></app-card>
+    </div>
+    <div class="col2-lg border langelis">
+      <app-card [card]="card3"></app-card>
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
     </div>
   </div>
   <div class="row">
-    <div class="col6-sm border langelis">
-      <app-card [card] = "card2"></app-card>
+    <div class="col6-lg">
+      <div>Player1</div>
+      <app-health [playerId]="card1.playerId"></app-health>
     </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
-    </div>
-    <div class="col6-sm border langelis">
+    <div class="col6-lg left">
+      <div>Player2</div>
+      <app-health [playerId]="card2.playerId"></app-health>
     </div>
   </div>
   <div class="row">
-    <div class="col6-sm border langelis">
-      4
+    <div class="col6-lg border langelis">
+      <app-card [card]="card2"></app-card>
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
+      <app-card [card]="card4"></app-card>
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
     </div>
-    <div class="col6-sm border langelis">
+    <div class="col2-lg border langelis">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
+    </div>
+    <div class="col2-lg border langelis">
     </div>
   </div>
 </div>
-
-
-<button (click)='onClicked()'>Click</button>
-
-<app-other></app-other>
