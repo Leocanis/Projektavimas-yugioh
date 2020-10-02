@@ -1,6 +1,6 @@
 <div>
     {{card.attack}}
 </div>
-<div *ngIf="card">
+<div *ngIf="card && playerId == card.playerId">
     <button (click)='onAttack()'>Attack</button>
 </div>

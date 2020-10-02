@@ -15,10 +15,10 @@
   </div>
   <div class="row">
     <div class="col2-lg border langelis">
-      <app-card [card]="card1"></app-card>
+      <app-card [playerId] = "playerId" [card]="card1"></app-card>
     </div>
     <div class="col2-lg border langelis">
-      <app-card [card]="card3"></app-card>
+      <app-card [playerId] = "playerId" [card]="card3"></app-card>
     </div>
     <div class="col2-lg border langelis">
     </div>
@@ -41,10 +41,10 @@
   </div>
   <div class="row">
     <div class="col6-lg border langelis">
-      <app-card [card]="card2"></app-card>
+      <app-card [playerId] = "playerId" [card]="card2"></app-card>
     </div>
     <div class="col2-lg border langelis">
-      <app-card [card]="card4"></app-card>
+      <app-card [playerId] = "playerId" [card]="card4"></app-card>
     </div>
     <div class="col2-lg border langelis">
     </div>
@@ -69,4 +69,7 @@
     <div class="col2-lg border langelis">
     </div>
   </div>
+</div>
+<div>
+  <input (keyup)="OnPlayerIdChange($event)">
 </div>

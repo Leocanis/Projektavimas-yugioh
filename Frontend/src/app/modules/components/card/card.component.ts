@@ -10,6 +10,7 @@ export class CardComponent {
 
     constructor(private attackService: AttackService) { }
 
+    @Input() playerId: number;
     @Input() card: ICard;
 
     onAttack(): void {

@@ -9,9 +9,8 @@ import { Message } from './shared/models/message';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy, OnInit {
-  private signalRSubscription: Subscription;
+  private playerId: number;
 
-  public content: Message = null;
   private card1: ICard;
   private card2: ICard;
   private card3: ICard;
@@ -28,5 +27,10 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
+  }
+
+  OnPlayerIdChange(event: any) {
+    this.playerId = event.target.value;
+    console.log(this.playerId);
   }
 }
