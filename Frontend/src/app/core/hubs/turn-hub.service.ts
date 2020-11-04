@@ -1,3 +1,14 @@
+/*
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TurnHubService {
+
+  constructor() { }
+}*/
+//
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
@@ -8,7 +19,7 @@ import { IHealth } from '../../shared/models/health';
 @Injectable({
     providedIn: 'root'
   })
-  export class HealthHubService {
+  export class TurnHubService {
     private health$: Subject<any>;
     private connection: signalR.HubConnection;
 

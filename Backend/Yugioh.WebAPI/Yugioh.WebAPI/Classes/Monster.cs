@@ -7,5 +7,9 @@ namespace Yugioh.WebAPI.Classes
 {
     public abstract class Monster:Card
     {
+        public Monster()
+        {
+            
+        }
     }
 }

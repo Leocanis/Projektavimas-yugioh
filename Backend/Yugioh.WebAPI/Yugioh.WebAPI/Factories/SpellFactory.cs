@@ -9,7 +9,7 @@ namespace Yugioh.WebAPI.Factories
 {
     public class SpellFactory : AbstractFactory
     {
-        public override Card createRandCard()
+        public override Card createRandCard(int id)
         {
             Random rand = new Random(0);
             int nr = rand.Next(0, 6);

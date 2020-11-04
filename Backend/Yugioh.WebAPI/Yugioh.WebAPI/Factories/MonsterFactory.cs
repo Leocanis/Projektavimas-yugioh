@@ -9,9 +9,9 @@ namespace Yugioh.WebAPI.Factories
 {
     public class MonsterFactory : AbstractFactory
     {
-        public override Card createRandCard()
+        public override Card createRandCard(int id)
         {
-            Random rand = new Random(0);
+            Random rand = new Random(id);
             int nr = rand.Next(0, 7);
             switch(nr)
             {

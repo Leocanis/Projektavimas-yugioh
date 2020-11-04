@@ -14,7 +14,7 @@ namespace Yugioh.WebAPI.Classes
 
         public Deck()
         {
-            for (int i = 0; i < 20; i++)
+           /* for (int i = 0; i < 20; i++)
             {
                 abfact = new MonsterFactory();
                 Card c1 = abfact.createRandCard();
@@ -26,8 +26,12 @@ namespace Yugioh.WebAPI.Classes
                 carddeck.Add(c1);
                 carddeck.Add(c2);
                 carddeck.Add(c3);
-            }
+            }*/
         }
-        
+        public Card generateRandMonster(int seed)
+        {
+            abfact = new MonsterFactory();
+            return abfact.createRandCard(seed);
+        }
     }
 }

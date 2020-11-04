@@ -11,6 +11,6 @@ namespace Yugioh.WebAPI.Factories
         //public abstract Monster createRandMonster();
         //public abstract Spell createRandSpell();
         //public abstract Trap createRandTrap();
-        public abstract Card createRandCard();
+        public abstract Card createRandCard(int id);
     }
 }

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { IHealth } from '../../../shared/models/health';
 import { Subscription } from 'rxjs';
-import { HealthHubService } from 'src/app/core/hubs/health.hub.service';
-import { HealthService } from 'src/app/core/services/health.service';
+import { HealthHubService } from '../../../core/hubs/health.hub.service';
+import { HealthService } from '../../../core/services/health.service';
 
 @Component({
   selector: 'app-health',
