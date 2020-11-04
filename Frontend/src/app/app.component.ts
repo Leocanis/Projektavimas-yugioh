@@ -1,6 +1,7 @@
 import { ICard } from './shared/models/card';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BattleService } from './core/services/battle.service';
+import { PlayerturnService } from './core/services/playerturn.service';
 import { Subscription } from 'rxjs';
 import { Message } from './shared/models/message';
 
@@ -17,7 +18,7 @@ export class AppComponent implements OnDestroy, OnInit {
   private card3: ICard;
   private card4: ICard;
 
-  constructor (private battleservice: BattleService) { }
+  constructor (private battleservice: BattleService, private playerturnservice: PlayerturnService) { }
 
   ngOnInit(): void {
     this.battleservice.BattleObserver = false;
@@ -33,5 +34,6 @@ export class AppComponent implements OnDestroy, OnInit {
   OnPlayerIdChange(event: any) {
     this.playerId = event.target.value;
     console.log(this.playerId);
+    this.playerturnservice.TurnChange(this.playerId);
   }
 }

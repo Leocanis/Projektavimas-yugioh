@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IHealth } from 'src/app/shared/models/health';
+import { IHealth } from '../../shared/models/health';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
