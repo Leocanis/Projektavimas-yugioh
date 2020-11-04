@@ -1,7 +1,7 @@
 import { Component, Input,  } from '@angular/core';
-import { AttackService } from 'src/app/core/services/attack.service';
-import { BattleService } from 'src/app/core/services/battle.service';
-import { ICard } from 'src/app/shared/models/card';
+import { AttackService } from '../../../core/services/attack.service';
+import { BattleService } from '../../../core/services/battle.service';
+import { ICard } from '../../../shared/models/card';
 
 @Component({
     selector: 'app-card',
@@ -13,8 +13,15 @@ export class CardComponent {
 
     @Input() playerId: number;
     @Input() card: ICard;
+    target: ICard;
 
+    Target(): void{
+        this.target = this.card;
+        console.log("Targeting: "+this.target.name);
+        
+    }
     onAttack(): void {
+        console.log('from \'onAttack\' Method');
         this.card.attacking = true;
         this.battleservice.BattleObserver = true;
         this.attackService.Attack(this.card.playerId, this.card.attack);

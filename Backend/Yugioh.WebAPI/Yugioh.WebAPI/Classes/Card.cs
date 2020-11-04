@@ -11,5 +11,11 @@ namespace Yugioh.WebAPI.Classes
 {
     public abstract class Card 
     {
+        private int playerId { get; set; }
+        private string name { get; set; }
+        private int attack { get; set; }
+        private int defense { get; set; }
+        private string img { get; set; }
+        private bool attacking { get; set; }
     }
 }
