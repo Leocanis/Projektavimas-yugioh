@@ -29,5 +29,23 @@ namespace Yugioh.WebAPI.Factories
                     return new NormalTrap();
             }
         }
+        public override Card createCard(string name)
+        {
+            switch (name)
+            {
+                default:
+                    return new NormalTrap();
+                case "Consistent":
+                    return new ConsistentTrap();
+                case "Counter":
+                    return new CounterTrap();
+                case "Enchanting":
+                    return new EnchantingTrap();
+                case "Field":
+                    return new FieldTrap();
+                case "Normal":
+                    return new NormalTrap();
+            }
+        }
     }
 }

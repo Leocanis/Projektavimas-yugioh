@@ -33,5 +33,28 @@ namespace Yugioh.WebAPI.Factories
                     return new DarkMonster();
             }
         }
+
+        public override Card createCard(string name)
+        {
+            switch (name)
+            {
+                case "Dark":
+                    return new DarkMonster();
+                case "Earth":
+                    return new EarthMonster();
+                case "Fire":
+                    return new FireMonster();
+                case "Holy":
+                    return new HolyMonster();
+                case "Light":
+                    return new LightMonster();
+                case "Water":
+                    return new WaterMonster();
+                case "Wind":
+                    return new WindMonster();
+                default:
+                    return new DarkMonster();
+            }
+        }
     }
 }

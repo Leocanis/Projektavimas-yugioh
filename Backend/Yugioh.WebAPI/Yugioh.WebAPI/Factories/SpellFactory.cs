@@ -31,5 +31,24 @@ namespace Yugioh.WebAPI.Factories
                     return new RitualSpell();
             }
         }
+        public override Card createCard(string name)
+        {
+            switch (name)
+            {
+                default:
+                    return new NormalSpell();
+                case "Consistent":
+                    return new ConsistentSpell();
+                case " Counter":
+                    return new CounterSpell();
+                case "Enchanting":
+                    return new EnchantingSpell();
+                case "Field":
+                    return new FieldSpell();
+                case "Normal":
+                    return new NormalSpell();
+                case "Ritual":
+                    return new RitualSpell();
+            }
     }
 }

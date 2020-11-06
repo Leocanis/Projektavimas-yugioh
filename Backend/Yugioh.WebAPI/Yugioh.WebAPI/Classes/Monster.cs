@@ -9,7 +9,8 @@ namespace Yugioh.WebAPI.Classes
     {
         public Monster()
         {
-            
+            this.attack = 100;
+            this.defense = 100;
         }
     }
 }

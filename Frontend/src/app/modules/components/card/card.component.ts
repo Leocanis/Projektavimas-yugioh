@@ -17,7 +17,7 @@ export class CardComponent {
 
     @Input() playerId: number;
     @Input() card: ICard;
-    @Input() target :ICard = { playerId: 0, name: "", attack: 0, defense: 0, attacking: false, img: ""};//does not update
+    @Input() target: ICard = { playerId: 0, name: "", attack: 0, defense: 0, attacking: false, img: ""};//does not update
 
     Target(): void{
         //console.log("here");
