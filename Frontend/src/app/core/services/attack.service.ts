@@ -1,5 +1,7 @@
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 @Injectable({
     providedIn: 'root'
@@ -8,10 +10,10 @@ import { Injectable } from '@angular/core';
 export class AttackService {
     constructor(private http: HttpClient) { }
 
-    private Url = `http://localhost:5000/api/attack`;
+    private Url = environment.apiUrl + `/attack`;
 
     Attack(playerId: number, damage: number, defense: number, tdamage: number, tdefense: number) {
-        console.log("target damage: "+tdamage.toString());
+        console.log('target damage: ' + tdamage.toString());
         this.http.get(this.Url + '?playerId=' + playerId + '&damage=' + damage.toString()).subscribe();
     }
 }

@@ -9,16 +9,23 @@ namespace Yugioh.WebAPI.Controllers
     [Route("api/login")]
     public class LoginController : Controller
     {
-        public IActionResult Login()
+        public IActionResult Login(string loginName)
         {
             try
             {
-                return Ok();
+                var message = new Message();
+                message.MessageText = "Prisijungimas pavyko:" + loginName;
+                return Ok(message);
             }
             catch
             {
                 return BadRequest();
             }
         }
+    }
+
+    public class Message
+    {
+        public string MessageText { get; set; }
     }
 }

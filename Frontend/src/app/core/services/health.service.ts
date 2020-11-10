@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { IHealth } from '../../shared/models/health';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class HealthService {
   constructor(private http: HttpClient) { }
 
-  private Url = `http://localhost:5000/api/health/getHealth`;
+  private Url = environment.apiUrl + `/health/getHealth`;
 
   getHealth(playerId: number): Observable<IHealth> {
     const res = this.http.get<IHealth>(this.Url + '?playerId=' + playerId)

@@ -1,4 +1,6 @@
+import { IMessage } from 'src/app/shared/models/message';
 import { Component } from '@angular/core';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
     selector: 'app-login',
@@ -6,18 +8,21 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-    private _loginName: string;
+    constructor(private loginService: LoginService) { }
 
-    get loginName(): string {
-        return this._loginName;
-    }
-    set loginName(value: string) {
-        this._loginName = value;
-    }
+    private loginName: string;
+    private message: IMessage;
 
     onLogin(): void {
-        if (this._loginName) {
-            console.log(this._loginName);
+        if (this.loginName) {
+            this.loginService.Login(this.loginName).subscribe(success => {
+                this.message = success;
+            });
         }
+        console.log(this.message);
+    }
+
+    checkMessage(): void {
+        console.log(this.message);
     }
 }

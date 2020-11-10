@@ -49,9 +49,9 @@ namespace Yugioh.WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<NotificationHub>("/notificationHub");
-                endpoints.MapHub<HealthHub>("/healthHub");
-                endpoints.MapHub<GameHub>("/gameHub");
+                endpoints.MapHub<NotificationHub>("hub/notificationHub");
+                endpoints.MapHub<HealthHub>("hub/healthHub");
+                endpoints.MapHub<GameHub>("hub/gameHub");
             });
 
         }
