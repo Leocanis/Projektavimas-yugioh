@@ -29,7 +29,7 @@ namespace Yugioh.WebAPI
             });
             services.AddControllers();            
             services.AddSignalR();
-            StaticClass.Init();
+            services.AddSingleton<GameHub>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +49,6 @@ namespace Yugioh.WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<NotificationHub>("hub/notificationHub");
-                endpoints.MapHub<HealthHub>("hub/healthHub");
                 endpoints.MapHub<GameHub>("hub/gameHub");
             });
 

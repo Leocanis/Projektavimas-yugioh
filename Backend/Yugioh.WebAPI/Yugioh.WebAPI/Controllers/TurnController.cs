@@ -40,10 +40,10 @@ namespace Yugioh.WebAPI.Controllers
                     });
 
                 return Ok();*/
-                var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
+                //var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
 
-                var generatedCard = deck.generateRandMonster(player.Id + player.PlayerHealth.HealthCount);
-                _turnHubContext.Clients.All.SendAsync("SendCard", generatedCard);
+                //var generatedCard = deck.generateRandMonster(player.Id + player.PlayerHealth.HealthCount);
+                //_turnHubContext.Clients.All.SendAsync("SendCard", generatedCard);
                 return Ok();
             }
             catch

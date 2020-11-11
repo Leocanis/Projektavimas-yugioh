@@ -7,7 +7,12 @@ namespace Yugioh.Core.Entities.PlayerNs
 {
     public class Player
     {
-        public int Id { get; set; }
-        public Health PlayerHealth { get; set; }
+        public Guid id { get; set; }
+        public Health playerHealth { get; set; }
+
+        public Player()
+        {
+            this.playerHealth = new Health(8000);
+        }
     }
 }

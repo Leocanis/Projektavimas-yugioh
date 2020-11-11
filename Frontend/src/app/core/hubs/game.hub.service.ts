@@ -1,19 +1,19 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
-import { Observable, Subject } from 'rxjs';
+import { identity, Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { IHealth } from '../../shared/models/health';
+import { IGame } from 'src/app/shared/models/game';
+import { userInfo } from 'os';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HealthHubService {
-  private game$: Subject<any>;
+export class GameHubService {
+  private game$: Subject<IGame>;
   private connection: signalR.HubConnection;
 
   constructor() {
-    this.game$ = new Subject<any>();
+    this.game$ = new Subject<IGame>();
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl(environment.hubUrl + '/gameHub')
       .build();
@@ -22,14 +22,16 @@ export class HealthHubService {
   }
 
   private connect() {
-    this.connection.start().catch(err => console.log(err));
+    this.connection.start()
+    .then(() => console.log('Connection started'))
+    .catch(err => console.log(err));
 
     this.connection.on('SendGame', (game) => {
       this.game$.next(game);
     });
   }
 
-  public getHealth(): Observable<any> {
+  public getGame(): Observable<IGame> {
     return this.game$;
   }
 

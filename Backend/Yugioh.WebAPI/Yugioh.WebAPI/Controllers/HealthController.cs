@@ -17,8 +17,9 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                var player = StaticClass.players.Where(p => p.Id == playerId).FirstOrDefault();
-                return Ok(player.PlayerHealth);
+                //var player = StaticClass.players.Where(p => p.Id == playerId).FirstOrDefault();
+                //return Ok(player.PlayerHealth);
+                return Ok();
             }
             catch
             {

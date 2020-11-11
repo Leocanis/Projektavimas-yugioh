@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { IMessage } from 'src/app/shared/models/message';
+import { ILoginResponse } from 'src/app/shared/models/loginResponse';
 
 @Injectable({
     providedIn: 'root'
@@ -14,9 +14,9 @@ export class LoginService {
 
     private Url = environment.apiUrl + `/login`;
 
-    Login(loginName: string): Observable<IMessage> {
+    Login(loginName: string): Observable<ILoginResponse> {
 
-        return this.http.get<IMessage>(this.Url + '?loginName=' + loginName)
+        return this.http.get<ILoginResponse>(this.Url + '?loginName=' + loginName)
             .pipe(
                 tap(data => { }));
     }

@@ -6,6 +6,11 @@ namespace Yugioh.Core.Entities.HealthNs
 {
     public class Health
     {
-        public int HealthCount { get; set; }
+        public int healthCount { get; set; }
+
+        public Health(int health)
+        {
+            this.healthCount = health;
+        }
     }
 }
