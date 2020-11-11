@@ -23,11 +23,12 @@ export class GameHubService {
 
   private connect() {
     this.connection.start()
-    .then(() => console.log('Connection started'))
-    .catch(err => console.log(err));
+      .catch(err => console.log(err));
 
-    this.connection.on('SendGame', (game) => {
-      this.game$.next(game);
+    this.connection.on('SendGame', (gameId, game) => {
+      if (gameId === sessionStorage.getItem('gameId')) {
+        this.game$.next(game);
+      }
     });
   }
 

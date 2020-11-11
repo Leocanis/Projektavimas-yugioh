@@ -10,7 +10,7 @@ namespace Yugioh.Services.Hubs
     {
         public void SendGame(Game game)
         {
-            Clients.All.SendAsync("SendGame", game);
+            Clients.All.SendAsync("SendGame", game.id, game);
         }
     }
 }
