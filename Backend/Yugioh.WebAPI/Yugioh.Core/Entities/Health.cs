@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Yugioh.Core.Entities.HealthNs
+namespace Yugioh.Core.Entities
 {
     public class Health
     {

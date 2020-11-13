@@ -1,28 +1,27 @@
 <div class="sidebar">
   <div>
     <div class="phaseButtonDiv">
-      <button class="phaseButton" (click)='mainPhaseClick()'>Main phase</button>
+      <button class="btn btn-primary phaseButton" (click)='mainPhaseClick()'>Main phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="phaseButton" (click)='attackPhaseClick()'>Attack phase</button>
+      <button class="btn btn-primary phaseButton" (click)='attackPhaseClick()'>Attack phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="phaseButton" (click)='secondPhaseClick()'>Second phase</button>
+      <button class="btn btn-primary phaseButton" (click)='secondPhaseClick()'>Second phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="phaseButton" (click)='endTurnClick()'>End turn</button>
+      <button class="btn btn-primary phaseButton" (click)='endTurnClick()'>End turn</button>
     </div>
   </div>
-
   <div>
-    <div class="col6-lg width500">
-      <div *ngIf="game && game.player1">
+    <div class="player1Border" *ngIf="game && game.player1">
+      <div>
         <div> {{ game.player1.playerName }} </div>
         <app-health [health]="game.player1.playerHealth"></app-health>
       </div>
     </div>
-    <div class="col6-lg width500">
-      <div *ngIf="game && game.player2">
+    <div class="player2Border" *ngIf="game && game.player2">
+      <div>
         <div>{{ game.player2.playerName }} </div>
         <app-health [health]="game.player2.playerHealth"></app-health>
       </div>
@@ -31,96 +30,98 @@
 </div>
 <div class="content">
   <div class="container">
-    <div class="row">
-      <div class="col2-lg border langelis">
+    <div class="player1Border">
+      <div class="row">
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col2-lg border langelis">
+      <div class="row">
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-    </div>
-    <div class="row">
+      <div class="row">
 
-      <div class="col2-lg border langelis">
-        <app-card [playerId]="playerId" [card]="card1"></app-card>
-      </div>
-      <div class="col2-lg border langelis">
-        <app-card [playerId]="playerId" [card]="card3"></app-card>
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col6-lg border langelis">
-        <app-card [playerId]="playerId" [card]="card2"></app-card>
-      </div>
-      <div class="col2-lg border langelis">
-        <app-card [playerId]="playerId" [card]="card4"></app-card>
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
+        <div class="col2-lg border langelis">
+          <app-card [playerId]="playerId" [card]="card1"></app-card>
+        </div>
+        <div class="col2-lg border langelis">
+          <app-card [playerId]="playerId" [card]="card3"></app-card>
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col2-lg border langelis">
+    <div class="player2Border">
+      <div class="row">
+        <div class="col6-lg border langelis">
+          <app-card [playerId]="playerId" [card]="card2"></app-card>
+        </div>
+        <div class="col2-lg border langelis">
+          <app-card [playerId]="playerId" [card]="card4"></app-card>
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
-      <div class="col2-lg border langelis">
+      <div class="row">
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
-      </div>
-      <div class="col2-lg border langelis">
+      <div class="row">
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
+        <div class="col2-lg border langelis">
+        </div>
       </div>
     </div>
   </div>

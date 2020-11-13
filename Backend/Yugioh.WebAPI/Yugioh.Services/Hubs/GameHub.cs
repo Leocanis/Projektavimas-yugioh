@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Yugioh.Core.Entities.Game;
+using Yugioh.Core.Entities;
 
 namespace Yugioh.Services.Hubs
 {

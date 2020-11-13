@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Yugioh.Core.Entities.HealthNs;
 
-namespace Yugioh.Core.Entities.PlayerNs
+namespace Yugioh.Core.Entities
 {
     public class Player
     {

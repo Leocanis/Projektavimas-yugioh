@@ -36,3 +36,17 @@
     width: 180px;
     text-align: center;
   }
+
+  .player1Border {
+    border-style: outset; 
+    border-color: red; 
+    border-width: 5px;
+    padding: 5px;
+  }
+
+  .player2Border {
+    border-style: outset; 
+    border-color: blue; 
+    border-width: 5px;
+    padding: 5px;
+  }

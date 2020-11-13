@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Yugioh.Core.Entities.HealthNs;
-using Yugioh.Core.Entities.PlayerNs;
 
 namespace Yugioh.WebAPI.Controllers
 {

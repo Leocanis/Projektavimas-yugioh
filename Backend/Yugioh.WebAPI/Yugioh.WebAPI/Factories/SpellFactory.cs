@@ -22,7 +22,7 @@ namespace Yugioh.WebAPI.Factories
                 case 1:
                     return new CounterSpell();
                 case 2:
-                    return new EquipSpell();
+                    //return new EquipSpell();
                 case 3:
                     return new FieldSpell();
                 case 4:
