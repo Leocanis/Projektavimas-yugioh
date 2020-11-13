@@ -27,5 +27,15 @@ namespace Yugioh.WebAPI.Classes
             img = "";
             attacking = false;
         }
+        public int GetAtk()
+        {
+            return attack;
+        }
+
+        public int GetDef()
+        {
+            return defense;
+        }
+
     }
 }
