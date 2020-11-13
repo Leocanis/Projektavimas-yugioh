@@ -1,16 +1,16 @@
 <div class="sidebar">
   <div>
     <div class="phaseButtonDiv">
-      <button class="btn btn-primary phaseButton" (click)='mainPhaseClick()'>Main phase</button>
+      <button class="btn btn-primary phaseButton" (click)='mainPhaseClick()' [disabled]="toggleMainPhaseButton">Main phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="btn btn-primary phaseButton" (click)='attackPhaseClick()'>Attack phase</button>
+      <button class="btn btn-primary phaseButton" (click)='attackPhaseClick()' [disabled]="toggleAttackPhaseButton">Attack phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="btn btn-primary phaseButton" (click)='secondPhaseClick()'>Second phase</button>
+      <button class="btn btn-primary phaseButton" (click)='secondPhaseClick()' [disabled]="toggleSecondPhaseButton">Second phase</button>
     </div>
     <div class="phaseButtonDiv">
-      <button class="btn btn-primary phaseButton" (click)='endTurnClick()'>End turn</button>
+      <button class="btn btn-primary phaseButton" (click)='endTurnClick()' [disabled]="toggleEndTurnButton">End turn</button>
     </div>
   </div>
   <div>

@@ -10,7 +10,7 @@ namespace Yugioh.Core.Entities
         public Guid id { get; set; }
         public Player player1 { get; set; }
         public Player player2 { get; set; }
-
         public Turn turn { get; set; }
+        public string message { get; set; }
     }
 }

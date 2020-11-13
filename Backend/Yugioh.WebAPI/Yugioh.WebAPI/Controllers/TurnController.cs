@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Services.Hubs;
+using Yugioh.Services.Logic;
 using Yugioh.WebAPI.Classes;
 using Yugioh.WebAPI.Factories;
 
@@ -13,18 +14,78 @@ using Yugioh.WebAPI.Factories;
 
 namespace Yugioh.WebAPI.Controllers
 {
-    [Route("api/turnchange")]
+    [Route("api/turn")]
     [ApiController]
     public class TurnController : ControllerBase
     {
-        private Deck deck;
+        private TurnLogic _turnLogic;
 
-        private readonly IHubContext<TurnHub> _turnHubContext;
-        public TurnController(IHubContext<TurnHub> turnHubContext)
+
+        public TurnController(TurnLogic turnLogic)
         {
-            deck = new Deck();
-            _turnHubContext = turnHubContext;
+            _turnLogic = turnLogic;
         }
+
+        [Route("main")]
+        public IActionResult MainPhase(Guid playerId, Guid gameId)
+        {
+            try
+            {                
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [Route("attack")]
+        public IActionResult AttackPhase(Guid playerId, Guid gameId)
+        {
+            try
+            {
+                _turnLogic.Attack(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [Route("second")]
+        public IActionResult SecondPhase(Guid playerId, Guid gameId)
+        {
+            try
+            {
+                _turnLogic.Second(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [Route("end")]
+        public IActionResult EndTurn(Guid playerId, Guid gameId)
+        {
+            try
+            {
+                _turnLogic.EndTurn(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+
+
+
+
+
         public IActionResult TurnChange(int playerId)
         {
             try

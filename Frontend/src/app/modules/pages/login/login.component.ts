@@ -2,6 +2,7 @@ import { ILoginResponse } from 'src/app/shared/models/loginResponse';
 import { Component } from '@angular/core';
 import { LoginService } from 'src/app/core/services/login.service';
 import { Router } from '@angular/router';
+import { appConstants } from 'src/app/shared/constants/constants';
 
 @Component({
     selector: 'app-login',
@@ -16,8 +17,8 @@ export class LoginComponent {
     onLogin(): void {
         if (this.loginName) {
             this.loginService.Login(this.loginName).subscribe(loginResponse => {
-                sessionStorage.setItem('gameId', loginResponse.gameId);
-                sessionStorage.setItem('playerId', loginResponse.playerId);
+                sessionStorage.setItem(appConstants.sessionStorageGameId, loginResponse.gameId);
+                sessionStorage.setItem(appConstants.sessionStoragePlayerId, loginResponse.playerId);
                 this.router.navigateByUrl('/game');
             });
         }

@@ -1,11 +1,13 @@
+import { TurnPhases } from './../../../shared/enums/turnPhases';
 import { GameService } from './../../../core/services/game.service';
 import { ICard } from '../../../shared/models/card';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BattleService } from '../../../core/services/battle.service';
-import { PlayerturnService } from '../../../core/services/playerturn.service';
+import { TurnService } from '../../../core/services/turn.service';
 import { Subscription } from 'rxjs';
 import { GameHubService } from 'src/app/core/hubs/game.hub.service';
 import { IGame } from 'src/app/shared/models/game';
+import { appConstants } from 'src/app/shared/constants/constants';
 
 @Component({
   selector: 'app-game',
@@ -19,13 +21,13 @@ export class GameComponent implements OnDestroy, OnInit {
   constructor(
     private gameHubService: GameHubService,
     private battleservice: BattleService,
-    private playerturnservice: PlayerturnService,
+    private turnservice: TurnService,
     private gameSerive: GameService
   ) {
     this.gameHubSubscription = this.gameHubService.getGame().subscribe(
       (game) => {
         this.game = game;
-        console.log(this.game);
+        this.checkTurnPhase();
       });
   }
 
@@ -34,10 +36,16 @@ export class GameComponent implements OnDestroy, OnInit {
   private card3: ICard;
   private card4: ICard;
 
+  private toggleMainPhaseButton = true;
+  private toggleAttackPhaseButton = true;
+  private toggleSecondPhaseButton = true;
+  private toggleEndTurnButton = true;
+
   ngOnInit(): void {
-    this.gameSerive.getGame(sessionStorage.getItem('gameId')).subscribe({
+    this.gameSerive.getGame(sessionStorage.getItem(appConstants.sessionStorageGameId)).subscribe({
       next: game => {
         this.game = game;
+        this.checkTurnPhase();
       }
     });
 
@@ -64,18 +72,46 @@ export class GameComponent implements OnDestroy, OnInit {
   }
 
   mainPhaseClick(): void {
-
+    this.turnservice.mainPhase();
   }
 
   attackPhaseClick(): void {
-
+    this.turnservice.attackPhase();
   }
 
   secondPhaseClick(): void {
-
+    this.turnservice.secondPhase();
   }
 
   endTurnClick(): void {
+    this.turnservice.endTurn();
+  }
 
+  checkTurnPhase(): void {
+    if (this.game.turn && this.game.turn.playerId) {
+      if (this.game.turn.playerId !== sessionStorage.getItem(appConstants.sessionStoragePlayerId)) {
+        this.toggleMainPhaseButton = true;
+        this.toggleAttackPhaseButton = true;
+        this.toggleSecondPhaseButton = true;
+        this.toggleEndTurnButton = true;
+      } else {
+        if (this.game.turn.phase === TurnPhases.MainPhase) {
+          this.toggleMainPhaseButton = true;
+          this.toggleAttackPhaseButton = false;
+          this.toggleSecondPhaseButton = false;
+          this.toggleEndTurnButton = false;
+        } else if (this.game.turn.phase === TurnPhases.AttackPhase) {
+          this.toggleMainPhaseButton = true;
+          this.toggleAttackPhaseButton = true;
+          this.toggleSecondPhaseButton = false;
+          this.toggleEndTurnButton = false;
+        } else if (this.game.turn.phase === TurnPhases.SecondPhase) {
+          this.toggleMainPhaseButton = true;
+          this.toggleAttackPhaseButton = true;
+          this.toggleSecondPhaseButton = true;
+          this.toggleEndTurnButton = false;
+        }
+      }
+    }
   }
 }

@@ -1,9 +1,10 @@
+
 import { Injectable } from '@angular/core';
 import * as signalR from '@aspnet/signalr';
-import { identity, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { IGame } from 'src/app/shared/models/game';
-import { userInfo } from 'os';
+import { appConstants } from 'src/app/shared/constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class GameHubService {
     this.connection.start()
       .catch(err => console.log(err));
 
-    this.connection.on(sessionStorage.getItem('gameId'), (game) => {
+    this.connection.on(sessionStorage.getItem(appConstants.sessionStorageGameId), (game) => {
       this.game$.next(game);
     });
   }

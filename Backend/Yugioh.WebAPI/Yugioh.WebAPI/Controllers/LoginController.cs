@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Yugioh.Core.Entities;
 using Yugioh.Services.Hubs;
+using Yugioh.Services.Logic;
 
 namespace Yugioh.WebAPI.Controllers
 {
@@ -12,11 +13,13 @@ namespace Yugioh.WebAPI.Controllers
     public class LoginController : Controller
     {
         private GameHub _gameHub;
+        private GameLogic _gameLogic;
 
-        public LoginController(GameHub gameHub)
+        public LoginController(GameHub gameHub, GameLogic gameLogic)
         {
             _gameHub = gameHub;
-        }
+            _gameLogic = gameLogic;
+    }
         public IActionResult Login(string loginName)
         {
             try
@@ -49,6 +52,7 @@ namespace Yugioh.WebAPI.Controllers
                         game.player2.id = response.playerId = Guid.NewGuid();
                         game.player2.playerName = loginName;
                         response.gameId = game.id;
+                        _gameLogic.StartGame(game);
                         _gameHub.SendGame(game);
                     }
                 }
