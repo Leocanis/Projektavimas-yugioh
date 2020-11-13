@@ -38,11 +38,8 @@ export class GameComponent implements OnDestroy, OnInit {
     this.gameSerive.getGame(sessionStorage.getItem('gameId')).subscribe({
       next: game => {
         this.game = game;
-        console.log(this.game);
       }
     });
-
-
 
     this.battleservice.BattleObserver = false;
     this.card1 = {
@@ -64,5 +61,21 @@ export class GameComponent implements OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
+  }
+
+  mainPhaseClick(): void {
+
+  }
+
+  attackPhaseClick(): void {
+
+  }
+
+  secondPhaseClick(): void {
+
+  }
+
+  endTurnClick(): void {
+
   }
 }

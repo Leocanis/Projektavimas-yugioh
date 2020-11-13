@@ -30,6 +30,7 @@ namespace Yugioh.WebAPI.Controllers
                     newGame.id = response.gameId = Guid.NewGuid();
                     newGame.player1 = new Player();
                     newGame.player1.id = response.playerId = Guid.NewGuid();
+                    newGame.player1.playerName = loginName;
                     StaticClass.games.Add(newGame);
                 }
                 else
@@ -40,6 +41,7 @@ namespace Yugioh.WebAPI.Controllers
                         newGame.id = response.gameId = Guid.NewGuid();
                         newGame.player1 = new Player();
                         newGame.player1.id = response.playerId = Guid.NewGuid();
+                        newGame.player1.playerName = loginName;
                         StaticClass.games.Add(newGame);
                     }
                     else
@@ -47,6 +49,7 @@ namespace Yugioh.WebAPI.Controllers
                         var game = StaticClass.games.Last();
                         game.player2 = new Player();
                         game.player2.id = response.playerId = Guid.NewGuid();
+                        game.player2.playerName = loginName;
                         response.gameId = game.id;
                         _gameHub.SendGame(game);
                     }

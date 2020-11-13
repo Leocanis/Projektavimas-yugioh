@@ -8,6 +8,7 @@ namespace Yugioh.Core.Entities.PlayerNs
     public class Player
     {
         public Guid id { get; set; }
+        public string playerName { get; set; }
         public Health playerHealth { get; set; }
 
         public Player()

@@ -25,10 +25,8 @@ export class GameHubService {
     this.connection.start()
       .catch(err => console.log(err));
 
-    this.connection.on('SendGame', (gameId, game) => {
-      if (gameId === sessionStorage.getItem('gameId')) {
-        this.game$.next(game);
-      }
+    this.connection.on(sessionStorage.getItem('gameId'), (game) => {
+      this.game$.next(game);
     });
   }
 
