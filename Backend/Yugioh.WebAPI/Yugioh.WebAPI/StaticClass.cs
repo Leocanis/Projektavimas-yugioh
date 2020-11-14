@@ -8,6 +8,6 @@ namespace Yugioh.WebAPI
 {
     public static class StaticClass
     {
-        public static List<Game> games = new List<Game>();
+        //public static List<Game> games = new List<Game>();
     }
 }

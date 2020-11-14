@@ -41,6 +41,8 @@ export class GameComponent implements OnDestroy, OnInit {
   private toggleSecondPhaseButton = true;
   private toggleEndTurnButton = true;
 
+  private turn = 0;
+
   ngOnInit(): void {
     this.gameSerive.getGame(sessionStorage.getItem(appConstants.sessionStorageGameId)).subscribe({
       next: game => {
@@ -89,6 +91,7 @@ export class GameComponent implements OnDestroy, OnInit {
 
   checkTurnPhase(): void {
     if (this.game.turn && this.game.turn.playerId) {
+      this.turn = this.game.turn.phase;
       if (this.game.turn.playerId !== sessionStorage.getItem(appConstants.sessionStoragePlayerId)) {
         this.toggleMainPhaseButton = true;
         this.toggleAttackPhaseButton = true;

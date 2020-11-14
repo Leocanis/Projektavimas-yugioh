@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Yugioh.Services.Singleton;
 
 namespace Yugioh.WebAPI.Controllers
 {
@@ -15,7 +16,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                var game = StaticClass.games.Where(p => p.id == gameId).FirstOrDefault();
+                var game = GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault();
                 return Ok(game);
             }
             catch

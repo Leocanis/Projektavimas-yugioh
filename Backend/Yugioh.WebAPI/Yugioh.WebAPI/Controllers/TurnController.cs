@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Services.Hubs;
 using Yugioh.Services.Logic;
+using Yugioh.Services.Singleton;
 using Yugioh.WebAPI.Classes;
 using Yugioh.WebAPI.Factories;
 
@@ -44,7 +45,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.Attack(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                _turnLogic.Attack(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
@@ -58,7 +59,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.Second(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                _turnLogic.Second(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
@@ -72,7 +73,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.EndTurn(StaticClass.games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                _turnLogic.EndTurn(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
