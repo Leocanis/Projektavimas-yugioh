@@ -2,10 +2,10 @@
         {{card.name}}
     </b></div>
 <img src={{card.img}} alt={{card.name}} class="center">
-<div>
+<div *ngIf="card">
     Attack: {{card.attack}}
 </div>
-<div>
+<div *ngIf="card">
     Defense: {{card.defense}}
 </div>
 <div *ngIf="card && playerId == card.playerId">

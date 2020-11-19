@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Services.Hubs;
 using Yugioh.Services.Logic;
+using Yugioh.Services.Logic.Turn.Command;
 using Yugioh.Services.Singleton;
 using Yugioh.WebAPI.Classes;
 using Yugioh.WebAPI.Factories;
@@ -19,25 +20,11 @@ namespace Yugioh.WebAPI.Controllers
     [ApiController]
     public class TurnController : ControllerBase
     {
-        private TurnLogic _turnLogic;
+        private GameHub _gameHub;
 
-
-        public TurnController(TurnLogic turnLogic)
+        public TurnController(GameHub gameHub)
         {
-            _turnLogic = turnLogic;
-        }
-
-        [Route("main")]
-        public IActionResult MainPhase(Guid playerId, Guid gameId)
-        {
-            try
-            {                
-                return Ok();
-            }
-            catch
-            {
-                return BadRequest();
-            }
+            _gameHub = gameHub;
         }
 
         [Route("attack")]
@@ -45,7 +32,8 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.Attack(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                ICommand command = new AttackCommand(_gameHub);
+                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
@@ -59,7 +47,8 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.Second(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                ICommand command = new SecondPhaseCommand(_gameHub);
+                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
@@ -73,7 +62,8 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                _turnLogic.EndTurn(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                ICommand command = new EndTurnPhaseCommand(_gameHub);
+                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
                 return Ok();
             }
             catch
@@ -82,30 +72,24 @@ namespace Yugioh.WebAPI.Controllers
             }
         }
 
+        [Route("forward")]
+        public IActionResult Forward(Guid playerId, Guid gameId)
+        {
+            try
+            {                
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
 
-
-
-
-
-        public IActionResult TurnChange(int playerId)
+        [Route("back")]
+        public IActionResult Back(Guid playerId, Guid gameId)
         {
             try
             {
-                /*
-                var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
-                player.PlayerHealth.HealthCount -= damage;
-                _healthHubContext.Clients.All.SendAsync("SendHealth",
-                    new
-                    {
-                        playerId = player.Id,
-                        health = player.PlayerHealth
-                    });
-
-                return Ok();*/
-                //var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
-
-                //var generatedCard = deck.generateRandMonster(player.Id + player.PlayerHealth.HealthCount);
-                //_turnHubContext.Clients.All.SendAsync("SendCard", generatedCard);
                 return Ok();
             }
             catch
@@ -113,5 +97,32 @@ namespace Yugioh.WebAPI.Controllers
                 return BadRequest();
             }
         }
+
+        //public IActionResult TurnChange(int playerId)
+        //{
+        //    try
+        //    {
+        //        /*
+        //        var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
+        //        player.PlayerHealth.HealthCount -= damage;
+        //        _healthHubContext.Clients.All.SendAsync("SendHealth",
+        //            new
+        //            {
+        //                playerId = player.Id,
+        //                health = player.PlayerHealth
+        //            });
+
+        //        return Ok();*/
+        //        //var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
+
+        //        //var generatedCard = deck.generateRandMonster(player.Id + player.PlayerHealth.HealthCount);
+        //        //_turnHubContext.Clients.All.SendAsync("SendCard", generatedCard);
+        //        return Ok();
+        //    }
+        //    catch
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
     }
 }

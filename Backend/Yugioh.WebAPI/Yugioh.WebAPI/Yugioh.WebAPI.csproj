@@ -13,5 +13,9 @@
     <ProjectReference Include="..\Yugioh.Services\Yugioh.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
 
 </Project>
