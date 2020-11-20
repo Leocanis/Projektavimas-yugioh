@@ -1,0 +1,58 @@
+.langelis {
+    height: 200px;
+    margin: 10px;
+    width: 150px;
+  }
+    
+  .left {
+    text-align: left;
+  }
+
+  .width500 {
+    width: 500px;
+  }
+
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+
+  .phaseButtonDiv {
+    padding: 5px;
+  }
+
+  .phaseButton {
+    width: 180px;
+    text-align: center;
+  }
+
+  .player1Border {
+    border-style: outset; 
+    border-color: red; 
+    border-width: 5px;
+    padding: 5px;
+  }
+
+  .player2Border {
+    border-style: outset; 
+    border-color: blue; 
+    border-width: 5px;
+    padding: 5px;
+  }
+
+  .navigationButton {
+    width: 40%;
+    text-align: center;
+    margin: 5px;
+  }

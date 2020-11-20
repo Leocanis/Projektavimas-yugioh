@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Yugioh.Core.Entities.HealthNs;
 using Yugioh.Services.Hubs;
 
 namespace Yugioh.WebAPI.Classes
@@ -27,5 +26,15 @@ namespace Yugioh.WebAPI.Classes
             img = "";
             attacking = false;
         }
+        public int GetAtk()
+        {
+            return attack;
+        }
+
+        public int GetDef()
+        {
+            return defense;
+        }
+
     }
 }

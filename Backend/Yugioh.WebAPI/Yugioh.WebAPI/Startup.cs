@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Yugioh.Services.Hubs;
+using Yugioh.Services.Logic;
 
 namespace Yugioh.WebAPI
 {
@@ -29,7 +30,9 @@ namespace Yugioh.WebAPI
             });
             services.AddControllers();            
             services.AddSignalR();
-            StaticClass.Init();
+            services.AddSingleton<GameHub>();
+            services.AddTransient<GameLogic>();
+            services.AddTransient<TurnLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,8 +52,7 @@ namespace Yugioh.WebAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHub<NotificationHub>("/notificationHub");
-                endpoints.MapHub<HealthHub>("/healthHub");
+                endpoints.MapHub<GameHub>("hub/gameHub");
             });
 
         }

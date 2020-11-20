@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Yugioh.Core.Entities.HealthNs;
-using Yugioh.Core.Entities.PlayerNs;
 
 namespace Yugioh.WebAPI.Controllers
 {
@@ -17,8 +15,9 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                var player = StaticClass.players.Where(p => p.Id == playerId).FirstOrDefault();
-                return Ok(player.PlayerHealth);
+                //var player = StaticClass.players.Where(p => p.Id == playerId).FirstOrDefault();
+                //return Ok(player.PlayerHealth);
+                return Ok();
             }
             catch
             {
