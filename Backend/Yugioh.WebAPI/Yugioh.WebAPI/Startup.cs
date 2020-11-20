@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Yugioh.Services.Hubs;
 using Yugioh.Services.Logic;
+using Yugioh.Services.Logic.Auth;
 
 namespace Yugioh.WebAPI
 {
@@ -33,6 +34,7 @@ namespace Yugioh.WebAPI
             services.AddSingleton<GameHub>();
             services.AddTransient<GameLogic>();
             services.AddTransient<TurnLogic>();
+            services.AddTransient<AuthLogic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

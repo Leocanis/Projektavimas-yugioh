@@ -20,7 +20,8 @@ namespace Yugioh.WebAPI.Controllers
         {
             _gameHub = gameHub;
             _gameLogic = gameLogic;
-    }
+        }
+
         public IActionResult Login(string loginName)
         {
             try
@@ -37,7 +38,7 @@ namespace Yugioh.WebAPI.Controllers
                 }
                 else
                 {
-                    if(GamesSingleton.GetInstance().games.Last().player2 != null)
+                    if (GamesSingleton.GetInstance().games.Last().player2 != null)
                     {
                         var newGame = new Game();
                         newGame.id = response.gameId = Guid.NewGuid();

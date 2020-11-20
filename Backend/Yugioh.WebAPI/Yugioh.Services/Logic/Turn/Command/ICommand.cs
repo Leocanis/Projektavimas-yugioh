@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Yugioh.Core.Entities;
 
-namespace Yugioh.Services.Logic.Turn.Command
+namespace Yugioh.Services.Logic.Command
 {
     public abstract class ICommand
     {

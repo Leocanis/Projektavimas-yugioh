@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using Yugioh.Core.Entities;
+using Yugioh.Core.Enums;
 using Yugioh.Services.Hubs;
 
-namespace Yugioh.Services.Logic.Turn.Command
+namespace Yugioh.Services.Logic.Command
 {
     public class EndTurnPhaseCommand : ICommand
     {
@@ -13,8 +14,9 @@ namespace Yugioh.Services.Logic.Turn.Command
         public EndTurnPhaseCommand(GameHub gameHub)
         {
             _gameHub = gameHub;
-        }
-        public void ChangeTurnState(Game game, Guid playerId)
+        }        
+
+        public override void ChangeTurnState(Game game, Guid playerId)
         {
             if (game.player1.id == playerId)
             {
@@ -26,6 +28,16 @@ namespace Yugioh.Services.Logic.Turn.Command
             }
             game.turn.phase = TurnPhases.MainPhase;
             _gameHub.SendGame(game);
+        }
+
+        public override void Forward(Game game, Guid playerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Back(Game game, Guid playerId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

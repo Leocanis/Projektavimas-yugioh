@@ -12,11 +12,11 @@ import { ILoginResponse } from 'src/app/shared/models/loginResponse';
 export class LoginService {
     constructor(private http: HttpClient) { }
 
-    private Url = environment.apiUrl + `/login`;
+    private Url = environment.apiUrl + `/facade/`;
 
     Login(loginName: string): Observable<ILoginResponse> {
 
-        return this.http.get<ILoginResponse>(this.Url + '?loginName=' + loginName)
+        return this.http.get<ILoginResponse>(this.Url + 'login?loginName=' + loginName)
             .pipe(
                 tap(data => { }));
     }

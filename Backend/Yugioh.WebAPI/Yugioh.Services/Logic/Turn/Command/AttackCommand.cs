@@ -5,7 +5,7 @@ using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
 using Yugioh.Services.Hubs;
 
-namespace Yugioh.Services.Logic.Turn.Command
+namespace Yugioh.Services.Logic.Command
 {
     public class AttackCommand : ICommand
     {

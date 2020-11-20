@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Services.Hubs;
 using Yugioh.Services.Logic;
-using Yugioh.Services.Logic.Turn.Command;
+using Yugioh.Services.Logic.Command;
 using Yugioh.Services.Singleton;
 using Yugioh.WebAPI.Classes;
 using Yugioh.WebAPI.Factories;
@@ -19,21 +19,14 @@ namespace Yugioh.WebAPI.Controllers
     [Route("api/turn")]
     [ApiController]
     public class TurnController : ControllerBase
-    {
-        private GameHub _gameHub;
-
-        public TurnController(GameHub gameHub)
-        {
-            _gameHub = gameHub;
-        }
+    {        
 
         [Route("attack")]
         public IActionResult AttackPhase(Guid playerId, Guid gameId)
         {
             try
             {
-                ICommand command = new AttackCommand(_gameHub);
-                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                
                 return Ok();
             }
             catch
@@ -47,8 +40,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                ICommand command = new SecondPhaseCommand(_gameHub);
-                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+                
                 return Ok();
             }
             catch
@@ -61,9 +53,7 @@ namespace Yugioh.WebAPI.Controllers
         public IActionResult EndTurn(Guid playerId, Guid gameId)
         {
             try
-            {
-                ICommand command = new EndTurnPhaseCommand(_gameHub);
-                command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
+            {                
                 return Ok();
             }
             catch

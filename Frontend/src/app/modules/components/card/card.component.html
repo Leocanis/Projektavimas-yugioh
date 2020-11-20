@@ -1,16 +1,20 @@
-<div><b>
+<div *ngIf="card">
+    <b>
         {{card.name}}
-    </b></div>
-<img src={{card.img}} alt={{card.name}} class="center">
+    </b>
+</div>
+<div *ngIf="card">
+    <img src={{card.img}} alt={{card.name}} class="center">
+</div>
 <div *ngIf="card">
     Attack: {{card.attack}}
 </div>
 <div *ngIf="card">
     Defense: {{card.defense}}
 </div>
-<div *ngIf="card && playerId == card.playerId">
+<div *ngIf="card && playerId && playerId == card.playerId">
     <button (click)="onAttack()">Attack</button>
 </div>
-<div *ngIf="playerId != card.playerId && playerId != null && playerId != 0">
+<div *ngIf="card && playerId && playerId != card.playerId && playerId != null && playerId != 0">
     <button (click)='Target()'>Target</button>
 </div>
