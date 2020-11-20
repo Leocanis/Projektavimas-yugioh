@@ -13,7 +13,7 @@ namespace Yugioh.WebAPI.Factories
         {
             Random rand = new Random(0);
             int nr = rand.Next(0, 6);
-            switch(nr)
+            switch (nr)
             {
                 default:
                     return new NormalSpell();
@@ -22,7 +22,7 @@ namespace Yugioh.WebAPI.Factories
                 case 1:
                     return new CounterSpell();
                 case 2:
-                    //return new EquipSpell();
+                //return new EquipSpell();
                 case 3:
                     return new FieldSpell();
                 case 4:
@@ -41,8 +41,6 @@ namespace Yugioh.WebAPI.Factories
                     return new ConsistentSpell();
                 case " Counter":
                     return new CounterSpell();
-                case "Enchanting":
-                    return new EnchantingSpell();
                 case "Field":
                     return new FieldSpell();
                 case "Normal":
@@ -50,5 +48,6 @@ namespace Yugioh.WebAPI.Factories
                 case "Ritual":
                     return new RitualSpell();
             }
+        }
     }
 }
