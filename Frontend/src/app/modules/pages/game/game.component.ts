@@ -73,10 +73,6 @@ export class GameComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
   }
 
-  mainPhaseClick(): void {
-    this.turnservice.mainPhase();
-  }
-
   attackPhaseClick(): void {
     this.turnservice.attackPhase();
   }
