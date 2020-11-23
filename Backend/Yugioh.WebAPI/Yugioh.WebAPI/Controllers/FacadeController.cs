@@ -22,7 +22,7 @@ namespace Yugioh.WebAPI.Controllers
         }
 
         [Route("login")]
-        public IActionResult Login(string loginName)
+        public IActionResult Login(string loginName, string selectedtype)
         {
             try
             {

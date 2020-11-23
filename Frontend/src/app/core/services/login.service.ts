@@ -14,9 +14,9 @@ export class LoginService {
 
     private Url = environment.apiUrl + `/facade/`;
 
-    Login(loginName: string): Observable<ILoginResponse> {
+    Login(loginName: string, selectedtype: string): Observable<ILoginResponse> {
 
-        return this.http.get<ILoginResponse>(this.Url + 'login?loginName=' + loginName)
+        return this.http.get<ILoginResponse>(this.Url + 'login?loginName=' + loginName + '&selectedtype=' + selectedtype)
             .pipe(
                 tap(data => { }));
     }

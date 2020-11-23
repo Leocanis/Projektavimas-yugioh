@@ -22,6 +22,7 @@ namespace Yugioh.WebAPI.Factories
                 case 1:
                     return new CounterSpell();
                 case 2:
+                    return new NormalSpell();
                 //return new EquipSpell();
                 case 3:
                     return new FieldSpell();
@@ -30,6 +31,7 @@ namespace Yugioh.WebAPI.Factories
                 case 5:
                     return new RitualSpell();
             }
+            
         }
         public override Card createCard(string name)
         {

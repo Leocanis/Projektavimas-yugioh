@@ -11,12 +11,15 @@ import { appConstants } from 'src/app/shared/constants/constants';
 export class LoginComponent {
 
     constructor(private loginService: LoginService, private router: Router) { }
-
+    
+    types : string[] = ["Dark","Earth",'Fire','Holy','Light','Water','Wind'];
+    private selectedtype: string;
     private loginName: string;
 
     onLogin(): void {
-        if (this.loginName) {
-            this.loginService.Login(this.loginName).subscribe(loginResponse => {
+        if (this.loginName && this.selectedtype) {
+            
+            this.loginService.Login(this.loginName, this.selectedtype).subscribe(loginResponse => {
                 sessionStorage.setItem(appConstants.sessionStorageGameId, loginResponse.gameId);
                 sessionStorage.setItem(appConstants.sessionStoragePlayerId, loginResponse.playerId);
                 this.router.navigateByUrl('/game');
