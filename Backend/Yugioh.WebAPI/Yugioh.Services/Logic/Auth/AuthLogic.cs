@@ -30,6 +30,7 @@ namespace Yugioh.Services.Logic.Auth
                 newGame.player1.id = response.playerId = Guid.NewGuid();
                 newGame.player1.playerName = loginName;
                 newGame.player1.decktype = decktype;
+                newGame.player1.createDeck(decktype, 1);
                 GamesSingleton.GetInstance().games.Add(newGame);
             }
             else
@@ -42,6 +43,7 @@ namespace Yugioh.Services.Logic.Auth
                     newGame.player1.id = response.playerId = Guid.NewGuid();
                     newGame.player1.playerName = loginName;
                     newGame.player1.decktype = decktype;
+                    newGame.player1.createDeck(decktype, 1);
                     GamesSingleton.GetInstance().games.Add(newGame);
                 }
                 else
@@ -51,6 +53,7 @@ namespace Yugioh.Services.Logic.Auth
                     game.player2.id = response.playerId = Guid.NewGuid();
                     game.player2.playerName = loginName;
                     game.player2.decktype = decktype;
+                    game.player2.createDeck(decktype, 2);
                     response.gameId = game.id;
                     _gameLogic.StartGame(game);
                     _gameHub.SendGame(game);

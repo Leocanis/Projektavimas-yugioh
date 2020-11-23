@@ -7,10 +7,10 @@ namespace Yugioh.Core.Monsters
 {
     public class FireMonster : Classes.Monster
     {
-        public FireMonster()
+        public FireMonster(int id)
         {
             this.name = "FireMonster";
-            this.playerId = 1;
+            this.playerId = id;
             this.img = "";
             this.attack = 100;
             this.defense = 100;

@@ -8,10 +8,10 @@ namespace Yugioh.Core.Monsters
 {
     public class DarkMonster: Classes.Monster
     {
-        public DarkMonster()
+        public DarkMonster(int playerid)
         {
             this.name = "DarkMonster";
-            this.playerId = 1;
+            this.playerId = playerid;
             this.img = "";
             this.attack = 100;
             this.defense = 100;

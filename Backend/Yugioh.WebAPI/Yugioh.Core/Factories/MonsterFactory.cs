@@ -9,6 +9,8 @@ namespace Yugioh.Core.Factories
 {
     public class MonsterFactory : AbstractFactory
     {
+        public MonsterFactory() { }
+
         public override Card createRandCard(int id)
         {
             Random rand = new Random(id);
@@ -16,21 +18,21 @@ namespace Yugioh.Core.Factories
             switch(nr)
             {
                 case 0:
-                    return new DarkMonster();
+                    return new DarkMonster(playerID);
                 case 1:
-                    return new EarthMonster();
+                    return new EarthMonster(playerID);
                 case 2:
-                    return new FireMonster();
+                    return new FireMonster(playerID);
                 case 3:
-                    return new HolyMonster();
+                    return new HolyMonster(playerID);
                 case 4:
-                    return new LightMonster();
+                    return new LightMonster(playerID);
                 case 5:
-                    return new WaterMonster();
+                    return new WaterMonster(playerID);
                 case 6:
-                    return new WindMonster();
+                    return new WindMonster(playerID);
                 default:
-                    return new DarkMonster();
+                    return new DarkMonster(playerID);
             }
         }
 
@@ -39,21 +41,21 @@ namespace Yugioh.Core.Factories
             switch (name)
             {
                 case "Dark":
-                    return new DarkMonster();
+                    return new DarkMonster(playerID);
                 case "Earth":
-                    return new EarthMonster();
+                    return new EarthMonster(playerID);
                 case "Fire":
-                    return new FireMonster();
+                    return new FireMonster(playerID);
                 case "Holy":
-                    return new HolyMonster();
+                    return new HolyMonster(playerID);
                 case "Light":
-                    return new LightMonster();
+                    return new LightMonster(playerID);
                 case "Water":
-                    return new WaterMonster();
+                    return new WaterMonster(playerID);
                 case "Wind":
-                    return new WindMonster();
+                    return new WindMonster(playerID);
                 default:
-                    return new DarkMonster();
+                    return new DarkMonster(playerID);
             }
         }
     }

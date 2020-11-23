@@ -8,10 +8,10 @@ namespace Yugioh.Core.Monsters
 {
     public class WaterMonster : Classes.Monster
     {
-        public WaterMonster()
+        public WaterMonster(int id)
         {
             this.name = "WaterMonster";
-            this.playerId = 1;
+            this.playerId = id;
             this.img = "";
             this.attack = 100;
             this.defense = 100;

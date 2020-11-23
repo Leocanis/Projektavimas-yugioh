@@ -35,6 +35,8 @@ export class GameComponent implements OnDestroy, OnInit {
   private card2: ICard;
   private card3: ICard;
   private card4: ICard;
+  private card5: ICard;
+  private card6: ICard;
 
   private toggleMainPhaseButton = true;
   private toggleAttackPhaseButton = true;

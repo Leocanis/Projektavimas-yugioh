@@ -11,23 +11,33 @@ namespace Yugioh.Core.Classes
     {
         private AbstractFactory abfact;
         public ArrayList carddeck;
+        public string decktype { get; set; }
 
-        public Deck()
+        public Deck(int playerid)
         {
-           /* for (int i = 0; i < 20; i++)
+            carddeck = new ArrayList();
+            abfact = new MonsterFactory();
+            abfact.SetPlayerID(playerid);
+        }
+        public void generateDeck(string decktype)
+        {
+            
+            abfact = new SpellFactory();
+            Card c = abfact.createCard(decktype);
+            carddeck.Add(c);
+
+            abfact = new TrapFactory();
+            c = abfact.createCard(decktype);
+            carddeck.Add(c);
+
+            for (int i = 0; i < 50; i++)
             {
                 abfact = new MonsterFactory();
-                Card c1 = abfact.createRandCard();
-                abfact = new SpellFactory();
-                Card c2 = abfact.createRandCard();
-                abfact = new TrapFactory();
-                Card c3 = abfact.createRandCard();
-
-                carddeck.Add(c1);
-                carddeck.Add(c2);
-                carddeck.Add(c3);
-            }*/
+                c = abfact.createCard(decktype);
+                carddeck.Add(c);
+            }
         }
+
         public Card generateRandMonster(int seed)
         {
             abfact = new MonsterFactory();

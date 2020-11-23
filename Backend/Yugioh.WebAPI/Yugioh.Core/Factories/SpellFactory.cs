@@ -16,20 +16,20 @@ namespace Yugioh.Core.Factories
             switch (nr)
             {
                 default:
-                    return new NormalSpell();
+                    return new NormalSpell(playerID);
                 case 0:
-                    return new ConsistentSpell();
+                    return new ConsistentSpell(playerID);
                 case 1:
-                    return new CounterSpell();
+                    return new CounterSpell(playerID);
                 case 2:
-                    return new NormalSpell();
+                    return new NormalSpell(playerID);
                 //return new EquipSpell();
                 case 3:
                     return new FieldSpell();
                 case 4:
-                    return new NormalSpell();
+                    return new NormalSpell(playerID);
                 case 5:
-                    return new RitualSpell();
+                    return new RitualSpell(playerID);
             }
             
         }
@@ -38,17 +38,17 @@ namespace Yugioh.Core.Factories
             switch (name)
             {
                 default:
-                    return new NormalSpell();
+                    return new NormalSpell(playerID);
                 case "Consistent":
-                    return new ConsistentSpell();
+                    return new ConsistentSpell(playerID);
                 case " Counter":
-                    return new CounterSpell();
+                    return new CounterSpell(playerID);
                 case "Field":
                     return new FieldSpell();
                 case "Normal":
-                    return new NormalSpell();
+                    return new NormalSpell(playerID);
                 case "Ritual":
-                    return new RitualSpell();
+                    return new RitualSpell(playerID);
             }
         }
     }
