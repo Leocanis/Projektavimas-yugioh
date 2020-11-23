@@ -19,7 +19,7 @@ namespace Yugioh.Services.Logic.Auth
             _gameLogic = gameLogic;
         }
 
-        public LoginResponse Login(string loginName)
+        public LoginResponse Login(string loginName, string decktype)
         {
             var response = new LoginResponse();
             if (GamesSingleton.GetInstance().games.Count == 0)
@@ -29,6 +29,7 @@ namespace Yugioh.Services.Logic.Auth
                 newGame.player1 = new Player();
                 newGame.player1.id = response.playerId = Guid.NewGuid();
                 newGame.player1.playerName = loginName;
+                newGame.player1.decktype = decktype;
                 GamesSingleton.GetInstance().games.Add(newGame);
             }
             else
@@ -40,6 +41,7 @@ namespace Yugioh.Services.Logic.Auth
                     newGame.player1 = new Player();
                     newGame.player1.id = response.playerId = Guid.NewGuid();
                     newGame.player1.playerName = loginName;
+                    newGame.player1.decktype = decktype;
                     GamesSingleton.GetInstance().games.Add(newGame);
                 }
                 else
@@ -48,6 +50,7 @@ namespace Yugioh.Services.Logic.Auth
                     game.player2 = new Player();
                     game.player2.id = response.playerId = Guid.NewGuid();
                     game.player2.playerName = loginName;
+                    game.player2.decktype = decktype;
                     response.gameId = game.id;
                     _gameLogic.StartGame(game);
                     _gameHub.SendGame(game);

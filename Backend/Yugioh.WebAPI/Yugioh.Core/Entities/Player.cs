@@ -8,6 +8,8 @@ namespace Yugioh.Core.Entities
     {
         public Guid id { get; set; }
         public string playerName { get; set; }
+        public string decktype { get; set; }
+        
         public Health playerHealth { get; set; }
 
         public Player()

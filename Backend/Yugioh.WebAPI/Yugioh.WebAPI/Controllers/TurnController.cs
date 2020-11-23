@@ -8,8 +8,8 @@ using Yugioh.Services.Hubs;
 using Yugioh.Services.Logic;
 using Yugioh.Services.Logic.Command;
 using Yugioh.Services.Singleton;
-using Yugioh.WebAPI.Classes;
-using Yugioh.WebAPI.Factories;
+using Yugioh.Core.Classes;
+using Yugioh.Core.Factories;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

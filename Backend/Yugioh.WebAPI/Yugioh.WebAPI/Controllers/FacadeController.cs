@@ -26,7 +26,7 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                var response = _authLogic.Login(loginName);
+                var response = _authLogic.Login(loginName, selectedtype);
                 return Ok(response);
             }
             catch
