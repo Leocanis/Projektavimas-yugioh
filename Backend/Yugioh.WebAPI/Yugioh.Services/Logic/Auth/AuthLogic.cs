@@ -27,10 +27,13 @@ namespace Yugioh.Services.Logic.Auth
                 var newGame = new Game();
                 newGame.id = response.gameId = Guid.NewGuid();
                 newGame.player1 = new Player();
+                newGame.field1 = new Field();
                 newGame.player1.id = response.playerId = Guid.NewGuid();
                 newGame.player1.playerName = loginName;
                 newGame.player1.decktype = decktype;
                 newGame.player1.createDeck(decktype, 1);
+                //newGame.player1.drawCardsFromDeck(3);
+                newGame.PlayerDrawCardsIntoHand(1, 3);
                 GamesSingleton.GetInstance().games.Add(newGame);
             }
             else
@@ -40,21 +43,26 @@ namespace Yugioh.Services.Logic.Auth
                     var newGame = new Game();
                     newGame.id = response.gameId = Guid.NewGuid();
                     newGame.player1 = new Player();
+                    newGame.field1 = new Field();
                     newGame.player1.id = response.playerId = Guid.NewGuid();
                     newGame.player1.playerName = loginName;
                     newGame.player1.decktype = decktype;
                     newGame.player1.createDeck(decktype, 1);
+                    //var cards = newGame.player1.drawCardsFromDeck(3);
+                    newGame.PlayerDrawCardsIntoHand(1, 3);
                     GamesSingleton.GetInstance().games.Add(newGame);
                 }
                 else
                 {
                     var game = GamesSingleton.GetInstance().games.Last();
                     game.player2 = new Player();
+                    game.field2 = new Field();
                     game.player2.id = response.playerId = Guid.NewGuid();
                     game.player2.playerName = loginName;
                     game.player2.decktype = decktype;
                     game.player2.createDeck(decktype, 2);
                     response.gameId = game.id;
+                    game.PlayerDrawCardsIntoHand(2, 3);
                     _gameLogic.StartGame(game);
                     _gameHub.SendGame(game);
                 }
