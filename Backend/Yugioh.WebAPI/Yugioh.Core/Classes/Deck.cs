@@ -21,7 +21,7 @@ namespace Yugioh.Core.Classes
         }
         public void generateDeck(string decktype)
         {
-            
+
             abfact = new SpellFactory();
             Card c = abfact.createCard(decktype);
             carddeck.Add(c);
@@ -37,6 +37,17 @@ namespace Yugioh.Core.Classes
                 carddeck.Add(c);
             }
         }
+        public Card returnTopCard()
+        {
+            if (carddeck != null && carddeck.Count > 0)
+            {
+                var currentFirst = carddeck[0];
+                carddeck.RemoveAt(0);
+                return currentFirst;
+            }
+            return null;
+        }
+
 
         public Card generateRandMonster(int seed)
         {
