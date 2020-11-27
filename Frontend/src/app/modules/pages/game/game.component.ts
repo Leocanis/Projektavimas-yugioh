@@ -17,7 +17,8 @@ import { appConstants } from '../../../shared/constants/constants';
 export class GameComponent implements OnDestroy, OnInit {
   private gameHubSubscription: Subscription;
   private game: IGame;
-
+  private numinrow = [0,1,2,3,4,5];
+  
   constructor(
     private gameHubService: GameHubService,
     private battleservice: BattleService,
