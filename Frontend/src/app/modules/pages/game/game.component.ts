@@ -27,6 +27,9 @@ export class GameComponent implements OnDestroy, OnInit {
     this.gameHubSubscription = this.gameHubService.getGame().subscribe(
       (game) => {
         this.game = game;
+        console.log('in game===========');
+        console.log(game.field1);
+        
         this.checkTurnPhase();
       });
   }
