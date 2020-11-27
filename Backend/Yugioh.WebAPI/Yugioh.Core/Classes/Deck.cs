@@ -10,12 +10,12 @@ namespace Yugioh.Core.Classes
     public class Deck
     {
         private AbstractFactory abfact;
-        public ArrayList carddeck;
+        public List<Card> carddeck;
         public string decktype { get; set; }
 
         public Deck(int playerid)
         {
-            carddeck = new ArrayList();
+            carddeck = new List<Card>();
             abfact = new MonsterFactory();
             abfact.SetPlayerID(playerid);
         }
@@ -44,7 +44,7 @@ namespace Yugioh.Core.Classes
             return abfact.createRandCard(seed);
         }
 
-        public void Shuffle(ref ArrayList list)
+        public void Shuffle(ref List<Card> list)
         {
             Random rng = new Random();
 
