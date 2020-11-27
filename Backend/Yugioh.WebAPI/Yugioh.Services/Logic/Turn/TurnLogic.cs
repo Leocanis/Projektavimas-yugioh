@@ -20,7 +20,7 @@ namespace Yugioh.Services.Logic
         }
         public void Attack(Guid gameId, Guid playerId)
         {
-            ICommand command = new AttackCommand(_gameHub);
+            ICommand command = new AttackPhaseCommand(_gameHub);
             command.ChangeTurnState(GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault(), playerId);
         }
 

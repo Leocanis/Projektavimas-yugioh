@@ -7,10 +7,10 @@ using Yugioh.Services.Hubs;
 
 namespace Yugioh.Services.Logic.Command
 {
-    public class AttackCommand : ICommand
+    public class AttackPhaseCommand : ICommand
     {
         private GameHub _gameHub;
-        public AttackCommand(GameHub gameHub)
+        public AttackPhaseCommand(GameHub gameHub)
         {
             _gameHub = gameHub;
         }        

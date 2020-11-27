@@ -26,40 +26,41 @@ namespace Yugioh.WebAPI.Controllers
         {
             try
             {
-                var response = new LoginResponse();
-                if (GamesSingleton.GetInstance().games.Count == 0)
-                {
-                    var newGame = new Game();
-                    newGame.id = response.gameId = Guid.NewGuid();
-                    newGame.player1 = new Player();
-                    newGame.player1.id = response.playerId = Guid.NewGuid();
-                    newGame.player1.playerName = loginName;
-                    GamesSingleton.GetInstance().games.Add(newGame);
-                }
-                else
-                {
-                    if (GamesSingleton.GetInstance().games.Last().player2 != null)
-                    {
-                        var newGame = new Game();
-                        newGame.id = response.gameId = Guid.NewGuid();
-                        newGame.player1 = new Player();
-                        newGame.player1.id = response.playerId = Guid.NewGuid();
-                        newGame.player1.playerName = loginName;
-                        GamesSingleton.GetInstance().games.Add(newGame);
-                    }
-                    else
-                    {
-                        var game = GamesSingleton.GetInstance().games.Last();
-                        game.player2 = new Player();
-                        game.player2.id = response.playerId = Guid.NewGuid();
-                        game.player2.playerName = loginName;
-                        response.gameId = game.id;
-                        _gameLogic.StartGame(game);
-                        _gameHub.SendGame(game);
-                    }
-                }
+                //var response = new LoginResponse();
+                //if (GamesSingleton.GetInstance().games.Count == 0)
+                //{
+                //    var newGame = new Game();
+                //    newGame.id = response.gameId = Guid.NewGuid();
+                //    newGame.player1 = new Player();
+                //    newGame.player1.id = response.playerId = Guid.NewGuid();
+                //    newGame.player1.playerName = loginName;
+                //    GamesSingleton.GetInstance().games.Add(newGame);
+                //}
+                //else
+                //{
+                //    if (GamesSingleton.GetInstance().games.Last().player2 != null)
+                //    {
+                //        var newGame = new Game();
+                //        newGame.id = response.gameId = Guid.NewGuid();
+                //        newGame.player1 = new Player();
+                //        newGame.player1.id = response.playerId = Guid.NewGuid();
+                //        newGame.player1.playerName = loginName;
+                //        GamesSingleton.GetInstance().games.Add(newGame);
+                //    }
+                //    else
+                //    {
+                //        var game = GamesSingleton.GetInstance().games.Last();
+                //        game.player2 = new Player();
+                //        game.player2.id = response.playerId = Guid.NewGuid();
+                //        game.player2.playerName = loginName;
+                //        response.gameId = game.id;
+                //        _gameLogic.StartGame(game);
+                //        _gameHub.SendGame(game);
+                //    }
+                //}
 
-                return Ok(response);
+                //return Ok(response);
+                return Ok();
             }
             catch
             {
