@@ -1,6 +1,8 @@
 import { ITurn } from './turn';
 import { IPlayer } from './player';
-import { IField } from '../models/field';
+
+import { IField } from './field';
+
 export interface IGame {
     id: string;
     player1: IPlayer;

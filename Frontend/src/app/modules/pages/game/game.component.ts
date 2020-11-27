@@ -51,6 +51,7 @@ export class GameComponent implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.gameSerive.getGame(sessionStorage.getItem(appConstants.sessionStorageGameId)).subscribe({
       next: game => {
+        console.log(game);
         this.game = game;
         this.checkTurnPhase();
       }
