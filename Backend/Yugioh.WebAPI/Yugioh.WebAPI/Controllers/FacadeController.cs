@@ -22,11 +22,11 @@ namespace Yugioh.WebAPI.Controllers
         }
 
         [Route("login")]
-        public IActionResult Login(string loginName)
+        public IActionResult Login(string loginName, string selectedtype)
         {
             try
             {
-                var response = _authLogic.Login(loginName);
+                var response = _authLogic.Login(loginName, selectedtype);
                 return Ok(response);
             }
             catch

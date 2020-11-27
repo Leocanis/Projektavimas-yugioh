@@ -4,3 +4,6 @@
 <div>
     <button (click)='onLogin()'>Login</button>
 </div>
+<select [(ngModel)] = 'selectedtype'>
+    <option *ngFor='let t of types' [value]='t'>{{t}}</option>
+</select>
