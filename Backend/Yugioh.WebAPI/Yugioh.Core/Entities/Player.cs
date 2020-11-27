@@ -27,5 +27,19 @@ namespace Yugioh.Core.Entities
         {
             hand.Draw(deck, 5);
         }
+        public Card[] drawCardsFromDeck(int amount)
+        {
+            if (amount > deck.carddeck.Count)
+            {
+                amount = deck.carddeck.Count;
+            }
+
+            Card[] cards = new Card[amount];
+            for (int i = 0; i < amount; i++)
+            {
+                cards[i] = deck.returnTopCard();
+            }
+            return cards;
+        }
     }
 }
