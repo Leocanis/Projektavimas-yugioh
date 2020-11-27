@@ -5,9 +5,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BattleService } from '../../../core/services/battle.service';
 import { TurnService } from '../../../core/services/turn.service';
 import { Subscription } from 'rxjs';
-import { GameHubService } from 'src/app/core/hubs/game.hub.service';
-import { IGame } from 'src/app/shared/models/game';
-import { appConstants } from 'src/app/shared/constants/constants';
+import { GameHubService } from '../../../core/hubs/game.hub.service';
+import { IGame } from '../../../shared/models/game';
+import { appConstants } from '../../../shared/constants/constants';
 
 @Component({
   selector: 'app-game',
