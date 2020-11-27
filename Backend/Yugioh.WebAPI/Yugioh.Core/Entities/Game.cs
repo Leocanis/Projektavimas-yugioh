@@ -15,14 +15,14 @@ namespace Yugioh.Core.Entities
         public Turn turn { get; set; }
         public string message { get; set; }
 
-        public void PlayerDrawCardsIntoHand(int playerId, int amount)
+        public void PlayerDrawCardsIntoHand(Guid playerId, int amount)
         {
-            if(playerId == 1)
+            if(playerId == player1.id)
             {
                 Card[] cards = player1.drawCardsFromDeck(amount);
                 field1.insertCardsIntoHandField(cards);
             }
-            else if(playerId ==2)
+            else if(playerId == player2.id)
             {
                 Card[] cards = player2.drawCardsFromDeck(amount);
                 field2.insertCardsIntoHandField(cards);

@@ -38,7 +38,7 @@
       <div class="row">
 
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="i; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game.field1.handfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               {{index}}
@@ -125,18 +125,17 @@
         </div>
       </div>
       <div class="row">
-        <div class="col2-lg border langelis">
+        
+        <div *ngFor="let i of numinrow; let index=index;">
+          <div *ngIf="game.field2.handfield[index]; then thenBlock else elseBlock;"></div>
+          <ng-template #thenBlock>
+            <div class="col2-lg border langelis">
+              {{index}}
+            </div>
+            </ng-template>
+          <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
+
       </div>
     </div>
   </div>

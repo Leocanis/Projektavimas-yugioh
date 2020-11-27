@@ -8,12 +8,12 @@ namespace Yugioh.Core.Classes
 {
     public abstract class Card 
     {
-        protected int playerId { get; set; }
-        protected string name { get; set; }
-        protected int attack { get; set; }
-        protected int defense { get; set; }
-        protected string img { get; set; }
-        protected bool attacking { get; set; }
+        public int playerId { get; set; }
+        public string name { get; set; }
+        public int attack { get; set; }
+        public int defense { get; set; }
+        public string img { get; set; }
+        public bool attacking { get; set; }
 
         public Card()
         {
