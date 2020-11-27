@@ -7,11 +7,11 @@ namespace Yugioh.Core.Entities
 {
     public class Field
     {
-        public Card[] handfield;
+        public Card[] handfield { get; set; }
         private int handfieldCount;
-        public Card[] trapfield;
+        public Card[] trapfield { get; set; }
         private int trapfieldCount;
-        public Card[] monsterfield;
+        public Card[] monsterfield { get; set; }
         private int monsterfieldCount;
 
         public Field()
