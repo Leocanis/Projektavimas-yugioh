@@ -18,11 +18,11 @@ namespace Yugioh.Core.Spells
             monster = baseItem;
         }
 
-        public int GetAtk()
+        public new int GetAtk()
         {
             return (monster.GetAtk() + bonusAtk);
         }
-        public int GetDef()
+        public new int GetDef()
         {
             return (monster.GetDef() + bonusDef);
         }

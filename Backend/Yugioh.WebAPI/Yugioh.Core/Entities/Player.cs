@@ -10,6 +10,7 @@ namespace Yugioh.Core.Entities
         public string playerName { get; set; }
         public string decktype { get; set; }
         public Deck deck { get; set; }
+        public Hand hand { get; set; }
         public Health playerHealth { get; set; }
 
         public Player()
@@ -21,6 +22,10 @@ namespace Yugioh.Core.Entities
             deck = new Deck(playerid);
             deck.decktype = decktype;
             deck.generateDeck(decktype);
+        }
+        public void getHand(int playerid)
+        {
+            hand.Draw(deck, 5);
         }
     }
 }

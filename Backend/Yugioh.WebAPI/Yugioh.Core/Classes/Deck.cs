@@ -43,5 +43,19 @@ namespace Yugioh.Core.Classes
             abfact = new MonsterFactory();
             return abfact.createRandCard(seed);
         }
+
+        public void Shuffle(ref ArrayList list)
+        {
+            Random rng = new Random();
+
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                int number = rng.Next(i);
+                var temp = list[i];
+                list[i] = list[number];
+                list[number] = temp;
+             }
+        }
+
     }
 }
