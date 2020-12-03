@@ -132,7 +132,9 @@
           <div *ngIf="game.field2.handfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
-              {{index}}
+              
+              <app-card  [card]="game.field2.handfield[index]"></app-card>
+
             </div>
             </ng-template>
           <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
