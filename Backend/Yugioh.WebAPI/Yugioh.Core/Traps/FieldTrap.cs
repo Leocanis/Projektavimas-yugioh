@@ -7,5 +7,14 @@ namespace Yugioh.Core.Traps
 {
     public class FieldTrap : Classes.Trap
     {
+        public FieldTrap(int playerid)
+        {
+            this.name = "FieldTrap";
+            this.playerId = playerid;
+            this.img = "";
+            this.attack = -1;
+            this.defense = 100;
+            this.attacking = false;
+        }
     }
 }

@@ -7,5 +7,14 @@ namespace Yugioh.Core.Traps
 {
     public class EnchantingTrap : Classes.Trap
     {
+        public EnchantingTrap(int playerid)
+        {
+            this.name = "EnchantingTrap";
+            this.playerId = playerid;
+            this.img = "";
+            this.attack = -1;
+            this.defense = 100;
+            this.attacking = false;
+        }
     }
 }

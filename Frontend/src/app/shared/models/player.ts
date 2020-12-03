@@ -1,4 +1,4 @@
-import { IHealth } from 'src/app/shared/models/health';
+import { IHealth } from '../../shared/models/health';
 
 export interface IPlayer {
     id: string;

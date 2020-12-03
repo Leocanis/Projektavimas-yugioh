@@ -20,7 +20,7 @@ export class CardComponent {
     @Input() target: ICard = { playerId: 0, name: "", attack: 0, defense: 0, attacking: false, img: ""};//does not update
 
     Target(): void{
-        //console.log("here");
+        console.log("here");
         
         this.target = {playerId:this.card.playerId, attack:this.card.attack, defense:this.card.defense, 
             img:this.card.img, name:this.card.name,attacking:this.card.attacking};
