@@ -16,17 +16,17 @@ namespace Yugioh.Core.Factories
             switch (nr)
             {
                 default:
-                    return new NormalTrap();
+                    return new NormalTrap(playerID);
                 case 0:
-                    return new ConsistentTrap();
+                    return new ConsistentTrap(playerID);
                 case 1:
-                    return new CounterTrap();
+                    return new CounterTrap(playerID);
                 case 2:
-                    return new EnchantingTrap();
+                    return new EnchantingTrap(playerID);
                 case 3:
-                    return new FieldTrap();
+                    return new FieldTrap(playerID);
                 case 4:
-                    return new NormalTrap();
+                    return new NormalTrap(playerID);
             }
         }
         public override Card createCard(string name)
@@ -34,17 +34,17 @@ namespace Yugioh.Core.Factories
             switch (name)
             {
                 default:
-                    return new NormalTrap();
+                    return new NormalTrap(playerID);
                 case "Consistent":
-                    return new ConsistentTrap();
+                    return new ConsistentTrap(playerID);
                 case "Counter":
-                    return new CounterTrap();
+                    return new CounterTrap(playerID);
                 case "Enchanting":
-                    return new EnchantingTrap();
+                    return new EnchantingTrap(playerID);
                 case "Field":
-                    return new FieldTrap();
+                    return new FieldTrap(playerID);
                 case "Normal":
-                    return new NormalTrap();
+                    return new NormalTrap(playerID);
             }
         }
     }
