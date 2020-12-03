@@ -7,10 +7,15 @@
     <img src={{card.img}} alt={{card.name}} class="center">
 </div>
 <div *ngIf="card">
-    Attack: {{card.attack}}
+    <div *ngIf="card.attack > 0">
+        Attack: {{card.attack}}
+    </div>
 </div>
 <div *ngIf="card">
-    Defense: {{card.defense}}
+    <div *ngIf="card.attack > 0">
+        Defense: {{card.defense}}
+    </div>
+    
 </div>
 <div *ngIf="card && playerId && playerId == card.playerId">
     <button (click)="onAttack()">Attack</button>
