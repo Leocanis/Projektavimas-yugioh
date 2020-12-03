@@ -18,7 +18,8 @@ export class GameComponent implements OnDestroy, OnInit {
   private gameHubSubscription: Subscription;
   private game: IGame;
   private numinrow = [0,1,2,3,4,5];
-  
+  private playerId :number;
+
   constructor(
     private gameHubService: GameHubService,
     private battleservice: BattleService,
@@ -28,9 +29,20 @@ export class GameComponent implements OnDestroy, OnInit {
     this.gameHubSubscription = this.gameHubService.getGame().subscribe(
       (game) => {
         this.game = game;
-        console.log('in game===========');
-        console.log(game.field1);
+        //console.log('in game===========');
+        //console.log(this.playerId); //undefined; it does not save
         
+        console.log(game.field1);
+        console.log(game.field2);
+        console.log(game.turn.playerId);
+        if(game.turn.playerId == game.player1.id){
+            console.log("Player 1");
+            this.playerId = 1;
+        }
+        if(game.turn.playerId == game.player2.id){
+          console.log("Player 2");
+          this.playerId = 2;
+        }
         this.checkTurnPhase();
       });
   }
@@ -46,7 +58,7 @@ export class GameComponent implements OnDestroy, OnInit {
   private toggleAttackPhaseButton = true;
   private toggleSecondPhaseButton = true;
   private toggleEndTurnButton = true;
-
+  
   private turn = 0;
 
   ngOnInit(): void {

@@ -11,28 +11,30 @@ namespace Yugioh.Core.Classes
     {
         private AbstractFactory abfact;
         public List<Card> carddeck;
+        public int playerId { get; set; }
         public string decktype { get; set; }
 
         public Deck(int playerid)
         {
             carddeck = new List<Card>();
-            abfact = new MonsterFactory();
-            abfact.SetPlayerID(playerid);
+            //abfact = new MonsterFactory(playerid);
+            //abfact.SetPlayerID(playerid);
+            playerId = playerid;
         }
         public void generateDeck(string decktype)
         {
 
-            abfact = new SpellFactory();
+            abfact = new SpellFactory(playerId);
             Card c = abfact.createCard(decktype);
             carddeck.Add(c);
 
-            abfact = new TrapFactory();
+            abfact = new TrapFactory(playerId);
             c = abfact.createCard(decktype);
             carddeck.Add(c);
 
             for (int i = 0; i < 50; i++)
             {
-                abfact = new MonsterFactory();
+                abfact = new MonsterFactory(playerId);
                 c = abfact.createCard(decktype);
                 carddeck.Add(c);
             }
@@ -51,7 +53,7 @@ namespace Yugioh.Core.Classes
 
         public Card generateRandMonster(int seed)
         {
-            abfact = new MonsterFactory();
+            abfact = new MonsterFactory(playerId);
             return abfact.createRandCard(seed);
         }
 

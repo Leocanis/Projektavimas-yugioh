@@ -9,7 +9,10 @@ namespace Yugioh.Core.Factories
 {
     public class MonsterFactory : AbstractFactory
     {
-        public MonsterFactory() { }
+        public MonsterFactory(int id) 
+        {
+            this.playerID = id;
+        }
 
         public override Card createRandCard(int id)
         {

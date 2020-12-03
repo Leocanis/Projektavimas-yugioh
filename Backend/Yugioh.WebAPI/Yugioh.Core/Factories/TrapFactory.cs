@@ -9,6 +9,10 @@ namespace Yugioh.Core.Factories
 {
     public class TrapFactory : AbstractFactory
     {
+        public TrapFactory(int id)
+        {
+            this.playerID = id;
+        }
         public override Card createRandCard(int id)
         {
             Random rand = new Random(0);

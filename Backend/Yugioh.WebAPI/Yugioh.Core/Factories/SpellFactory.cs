@@ -9,6 +9,10 @@ namespace Yugioh.Core.Factories
 {
     public class SpellFactory : AbstractFactory
     {
+        public SpellFactory(int id)
+        {
+            this.playerID = id;
+        }
         public override Card createRandCard(int id)
         {
             Random rand = new Random(0);
