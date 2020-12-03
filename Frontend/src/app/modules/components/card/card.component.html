@@ -18,8 +18,15 @@
     
 </div>
 <div *ngIf="card && playerId && playerId == card.playerId">
+    <button (click)="PlayCard()">Play</button>
+</div>
+<!--
+<div *ngIf="card && playerId && playerId == card.playerId ">
     <button (click)="onAttack()">Attack</button>
 </div>
+-->
+<!--
 <div *ngIf="card && playerId && playerId != card.playerId && playerId != null && playerId != 0">
     <button (click)='Target()'>Target</button>
 </div>
+-->

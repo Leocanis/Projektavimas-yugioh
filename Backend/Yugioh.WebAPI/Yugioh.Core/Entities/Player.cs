@@ -17,6 +17,8 @@ namespace Yugioh.Core.Entities
         {
             this.playerHealth = new Health(8000);
         }
+     
+        
         public void createDeck(string decktype, int playerid)
         {
             deck = new Deck(playerid);

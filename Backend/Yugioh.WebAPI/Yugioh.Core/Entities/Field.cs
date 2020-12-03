@@ -24,6 +24,28 @@ namespace Yugioh.Core.Entities
             monsterfieldCount = 0;
         }
 
+        public void insertCardsIntoMonsterField(Card[] cards)
+        {
+            int n = monsterfieldCount;
+            int m = cards.Length;
+            if (n + m > 6)
+            {
+                m = 6 - n;
+            }
+
+            for (int i = 0; i < m; i++)
+            {
+                try
+                {
+                    //deck.carddeck.Add(cards[i]);
+                    monsterfield[monsterfieldCount++] = cards[i];
+                }
+                catch
+                {
+
+                }
+            }
+        }
         public void insertCardsIntoHandField(Card[] cards)
         {
             int n = handfieldCount;
@@ -50,11 +72,18 @@ namespace Yugioh.Core.Entities
         public Card removeCardFromHandField(int index)
         {
             Card c = handfield[index];
+            if(c==null)
+            {
+                return c;
+            }
             for (int i = index; i < handfield.Length-1; i++)
             {
                 handfield[i] = handfield[i + 1];
             }
-            handfield[handfieldCount--] = null;
+            if (handfieldCount > 0)
+            {
+                handfield[handfieldCount--] = null;
+            }
             return c;
         }
     }

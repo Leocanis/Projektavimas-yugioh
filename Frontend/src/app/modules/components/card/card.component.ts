@@ -5,6 +5,7 @@ import { bind } from '@angular/core/src/render3';
 import { updateBinding } from '@angular/core/src/render3/instructions';
 import { AttackService } from '../../../core/services/attack.service';
 import { BattleService } from '../../../core/services/battle.service';
+import { PlaycardService } from '../../../core/services/playcard.service';
 import { ICard } from '../../../shared/models/card';
 
 @Component({
@@ -13,26 +14,25 @@ import { ICard } from '../../../shared/models/card';
 })
 export class CardComponent {
 
-    constructor(private attackService: AttackService, private battleservice: BattleService) { }
+    constructor(private attackService: AttackService, private battleservice: BattleService, private playcardService: PlaycardService) { }
 
+    @Input() i:number
+    @Input() fieldtype: string;
     @Input() playerId: number;
+    @Input() player: string;
     @Input() card: ICard;
     @Input() target: ICard = { playerId: 0, name: "", attack: 0, defense: 0, attacking: false, img: ""};//does not update
 
+    PlayCard(): void{
+        //console.log("playcard index: "+this.i);
+        //console.log("playcard player: "+this.player);
+        console.log("playcard playerindex: "+this.playerId);
+        this.playcardService.PlayCard(this.player,this.i,this.playerId);
+    }
     Target(): void{
         console.log("target");
         console.log(this.card.playerId);
-        //this.target = {playerId:this.card.playerId, attack:this.card.attack, defense:this.card.defense, 
-        //    img:this.card.img, name:this.card.name,attacking:this.card.attacking};
-        
-        //this.target.attack = this.card.attack;
-        //this.target.defense = this.card.defense;
-        //this.target.img = this.card.img;
-        //this.target.name = this.card.name;
-        //this.target.playerId = this.card.playerId;
-        
-        //target:this.card;
-        //this.target = this.card;
+
         console.log("Targeting: "+this.target.name);
         console.log("Target stats:");
         console.log("Damage:" +this.target.attack);
@@ -40,8 +40,8 @@ export class CardComponent {
     }
     onAttack(): void {
         console.log('from \'onAttack\' Method');
-        console.log("Targeting: "+this.target.name);
-        console.log("Target\'s owner: "+this.target.playerId);
+        console.log('player in attack id:'+this.card.playerId);
+        
         this.card.attacking = true;
         this.battleservice.BattleObserver = true;
         this.attackService.Attack(this.card.playerId, this.card.attack, this.card.defense, this.target.attack, this.target.defense);

@@ -19,6 +19,8 @@ export class GameComponent implements OnDestroy, OnInit {
   private game: IGame;
   private numinrow = [0,1,2,3,4,5];
   private playerId :number;
+  private fieldtype: string;
+  private f: number;
 
   constructor(
     private gameHubService: GameHubService,
@@ -36,13 +38,15 @@ export class GameComponent implements OnDestroy, OnInit {
         console.log(game.field2);
         console.log(game.turn.playerId);
         if(game.turn.playerId == game.player1.id){
-            console.log("Player 1");
+            //console.log("Player 1");
             this.playerId = 1;
         }
         if(game.turn.playerId == game.player2.id){
-          console.log("Player 2");
+          //console.log("Player 2");
           this.playerId = 2;
         }
+        //this.f =1;
+        console.log('player id:'+this.playerId);
         this.checkTurnPhase();
       });
   }

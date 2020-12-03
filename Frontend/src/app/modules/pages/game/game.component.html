@@ -42,7 +42,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [playerId] ="playerId" [card]="game.field1.handfield[index]"></app-card>
+              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.handfield[index]"></app-card>
 
             </div>
             </ng-template>
@@ -64,67 +64,66 @@
       </div>
 
       <div class="row">
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
+        
+        <div *ngFor="let i of numinrow; let index=index;">
+          <div *ngIf="game.field1.trapfield[index]; then thenBlock else elseBlock;"></div>
+          <ng-template #thenBlock>
+            <div class="col2-lg border langelis">
+              
+              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.trapfield[index]"></app-card>
+
+            </div>
+            </ng-template>
+          <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
       </div>
+
       <div class="row">
 
-        <div class="col2-lg border langelis">
-          <!--<app-card [playerId]="playerId" [card]="card1"></app-card>-->
+        <div *ngFor="let i of numinrow; let index=index;">
+          <div *ngIf="game.field1.monsterfield[index]; then thenBlock else elseBlock;"></div>
+          <ng-template #thenBlock>
+            <div class="col2-lg border langelis">
+              
+              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.monsterfield[index]"></app-card>
+
+            </div>
+            </ng-template>
+          <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
-        <div class="col2-lg border langelis">
-          <!--<app-card [playerId]="playerId" [card]="card3"></app-card>-->
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
+        
       </div>
     </div>
     <div class="player2Border">
       <div class="row">
-        <div class="col6-lg border langelis">
-          <!--<app-card [playerId]="playerId" [card]="card2"></app-card>-->
+        
+        <div *ngFor="let i of numinrow; let index=index;">
+          <div *ngIf="game.field2.monsterfield[index]; then thenBlock else elseBlock;"></div>
+          <ng-template #thenBlock>
+            <div class="col2-lg border langelis">
+              
+              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
+
+            </div>
+            </ng-template>
+          <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
-        <div class="col2-lg border langelis">
-          <!--<app-card [playerId]="playerId" [card]="card4"></app-card>-->
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
+
       </div>
       <div class="row">
-        <div class="col2-lg border langelis">
+        
+        <div *ngFor="let i of numinrow; let index=index;">
+          <div *ngIf="game.field2.trapfield[index]; then thenBlock else elseBlock;"></div>
+          <ng-template #thenBlock>
+            <div class="col2-lg border langelis">
+              
+              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
+
+            </div>
+            </ng-template>
+          <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
-        <div class="col2-lg border langelis">
-        </div>
+
       </div>
       <div class="row">
         
@@ -133,7 +132,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card  [card]="game.field2.handfield[index]"></app-card>
+              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
 
             </div>
             </ng-template>

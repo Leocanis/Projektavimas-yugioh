@@ -15,6 +15,21 @@ namespace Yugioh.Core.Entities
         public Turn turn { get; set; }
         public string message { get; set; }
 
+        public void PlayCardFromHand(string playerId, int index)
+        {
+            if(player1.id.ToString() == playerId)
+            {
+                Card c = field1.removeCardFromHandField(index);
+                Card[] cs = { c };
+                field1.insertCardsIntoMonsterField(cs);
+            }
+            else if (player2.id.ToString() == playerId)
+            {
+                Card c = field2.removeCardFromHandField(index);
+                Card[] cs = { c };
+                field2.insertCardsIntoMonsterField(cs);
+            }
+        }
         public void PlayerDrawCardsIntoHand(Guid playerId, int amount)
         {
             if(playerId == player1.id)
