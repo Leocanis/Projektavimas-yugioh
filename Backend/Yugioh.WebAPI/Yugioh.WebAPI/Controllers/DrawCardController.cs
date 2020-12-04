@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Yugioh.Services.Singleton;
 
 namespace Yugioh.WebAPI.Controllers
 {
@@ -10,20 +11,13 @@ namespace Yugioh.WebAPI.Controllers
     {
         public DrawCardController() { }
 
-        public IActionResult DrawCard(int playerId, int amount)
+        public IActionResult DrawCard(Guid gameId, Guid playerId, int amount)
         {
             try
             {
-                //var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
-                //player.PlayerHealth.HealthCount -= damage;
-                //_healthHubContext.Clients.All.SendAsync("SendHealth",
-                //    new
-                //    {
-                //        playerId = player.Id,
-                //        health = player.PlayerHealth
-                //    });
-
-                return Ok();
+                var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
+                game.PlayerDrawCardsIntoHand(playerId, amount);
+                    return Ok();
             }
             catch
             {

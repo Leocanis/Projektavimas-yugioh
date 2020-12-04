@@ -102,7 +102,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
+              <app-card [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
 
             </div>
             </ng-template>
@@ -117,7 +117,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
+              <app-card [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
 
             </div>
             </ng-template>
@@ -132,7 +132,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index" [fieldtype] ='hand' [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
+              <app-card [field] = 'hand' [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
 
             </div>
             </ng-template>

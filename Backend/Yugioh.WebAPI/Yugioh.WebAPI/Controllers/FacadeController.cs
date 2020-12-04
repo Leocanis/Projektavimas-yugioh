@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Yugioh.Core.Enums;
 using Yugioh.Services.Logic;
 using Yugioh.Services.Logic.Auth;
-
+using Yugioh.WebAPI.Controllers;
 namespace Yugioh.WebAPI.Controllers
 {
     [Route("api/facade")]
@@ -14,11 +14,12 @@ namespace Yugioh.WebAPI.Controllers
     {
         private AuthLogic _authLogic;
         private TurnLogic _turnLogic;
-
+        private DrawCardController drawcardcontroller;
         public FacadeController(AuthLogic authLogic, TurnLogic turnLogic)
         {
             _authLogic = authLogic;
             _turnLogic = turnLogic;
+            drawcardcontroller = new DrawCardController();
         }
 
         [Route("login")]
@@ -49,6 +50,7 @@ namespace Yugioh.WebAPI.Controllers
                         _turnLogic.Second(gameId, playerId);
                         break;
                     case TurnPhases.EndTurn:
+                        drawcardcontroller.DrawCard(gameId, playerId, 1);
                         _turnLogic.EndTurn(gameId, playerId);
                         break;
                     default:

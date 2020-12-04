@@ -20,6 +20,9 @@
 <div *ngIf="card && playerId && playerId == card.playerId">
     <button (click)="PlayCard()">Play</button>
 </div>
+<div *ngIf="card && playerId && playerId == card.playerId && field =='hand'">
+    <button (click)="PlayCard()">test</button>
+</div>
 <!--
 <div *ngIf="card && playerId && playerId == card.playerId ">
     <button (click)="onAttack()">Attack</button>

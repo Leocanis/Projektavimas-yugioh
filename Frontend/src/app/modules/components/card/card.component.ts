@@ -17,7 +17,7 @@ export class CardComponent {
     constructor(private attackService: AttackService, private battleservice: BattleService, private playcardService: PlaycardService) { }
 
     @Input() i:number
-    @Input() fieldtype: string;
+    @Input() field: string;
     @Input() playerId: number;
     @Input() player: string;
     @Input() card: ICard;
