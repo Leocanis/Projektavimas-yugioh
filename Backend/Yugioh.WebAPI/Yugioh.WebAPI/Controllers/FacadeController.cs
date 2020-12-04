@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Yugioh.Core.Enums;
 using Yugioh.Services.Logic;
 using Yugioh.Services.Logic.Auth;
-using Yugioh.WebAPI.Controllers;
+using Yugioh.Services.Singleton;
+using Yugioh.Core.Strategy;
 namespace Yugioh.WebAPI.Controllers
 {
     [Route("api/facade")]
@@ -15,11 +16,15 @@ namespace Yugioh.WebAPI.Controllers
         private AuthLogic _authLogic;
         private TurnLogic _turnLogic;
         private DrawCardController drawcardcontroller;
+        private Strategy strategy;
+        private AttackController attackcontroller;
         public FacadeController(AuthLogic authLogic, TurnLogic turnLogic)
         {
             _authLogic = authLogic;
             _turnLogic = turnLogic;
             drawcardcontroller = new DrawCardController();
+            strategy = new Strategy();
+            attackcontroller = new AttackController();
         }
 
         [Route("login")]
@@ -44,6 +49,8 @@ namespace Yugioh.WebAPI.Controllers
                 switch(phase)
                 {
                     case TurnPhases.AttackPhase:
+                        var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
+                        strategy.decideStrategy(game, playerId);
                         _turnLogic.Attack(gameId, playerId);
                         break;
                     case TurnPhases.SecondPhase:

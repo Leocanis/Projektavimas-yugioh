@@ -42,24 +42,12 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.handfield[index]"></app-card>
+              <app-card  [field] ='hand' [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.handfield[index]"></app-card>
 
             </div>
             </ng-template>
           <ng-template #elseBlock> <div class="col2-lg border langelis"></div> </ng-template>
         </div>
-
-
-
-        <!--<div *ngFor="let i of game.field1.handfield">
-          <div class="col2-lg border langelis"></div>
-        </div>!-->
-
-        <!--<div *ngIf="numinrow">
-          <div class="col2-lg border langelis"></div>
-        </div> !-->
-
-
 
       </div>
 
@@ -102,7 +90,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
+              <app-card [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
 
             </div>
             </ng-template>
@@ -117,7 +105,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
+              <app-card [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
 
             </div>
             </ng-template>
@@ -132,7 +120,7 @@
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [field] = 'hand' [player] ='game.player2.id' [i] = "index" [field] ='hand' [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
+              <app-card [field] ='hand' [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
 
             </div>
             </ng-template>

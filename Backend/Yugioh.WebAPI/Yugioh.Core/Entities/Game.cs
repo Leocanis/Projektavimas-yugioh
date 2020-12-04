@@ -15,6 +15,17 @@ namespace Yugioh.Core.Entities
         public Turn turn { get; set; }
         public string message { get; set; }
 
+        public void DestroyMonster(Guid playerId, int index)
+        {
+            if(player1.id == playerId)
+            {
+                field1.removeCardFromMonsterField(index);
+            }
+            if (player2.id == playerId)
+            {
+                field2.removeCardFromMonsterField(index);
+            }
+        }
         public void PlayCardFromHand(string playerId, int index)
         {
             if(player1.id.ToString() == playerId)

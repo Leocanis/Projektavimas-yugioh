@@ -8,11 +8,11 @@ namespace Yugioh.Core.Entities
     public class Field
     {
         public Card[] handfield { get; set; }
-        private int handfieldCount;
+        public int handfieldCount;
         public Card[] trapfield { get; set; }
-        private int trapfieldCount;
+        public int trapfieldCount;
         public Card[] monsterfield { get; set; }
-        private int monsterfieldCount;
+        public int monsterfieldCount;
 
         public Field()
         {
@@ -83,6 +83,24 @@ namespace Yugioh.Core.Entities
             if (handfieldCount > 0)
             {
                 handfield[handfieldCount--] = null;
+            }
+            return c;
+        }
+
+        public Card removeCardFromMonsterField(int index)
+        {
+            Card c = monsterfield[index];
+            if (c == null)
+            {
+                return c;
+            }
+            for (int i = index; i < monsterfield.Length - 1; i++)
+            {
+                monsterfield[i] = monsterfield[i + 1];
+            }
+            if (monsterfieldCount > 0)
+            {
+                monsterfield[monsterfieldCount--] = null;
             }
             return c;
         }

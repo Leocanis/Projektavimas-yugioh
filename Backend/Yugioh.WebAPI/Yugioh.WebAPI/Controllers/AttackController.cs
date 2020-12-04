@@ -6,16 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Core.Entities;
 using Yugioh.Services.Hubs;
+using Yugioh.Services.Singleton;
 
 namespace Yugioh.WebAPI.Controllers
 {
     [Route("api/attack")]
     public class AttackController : Controller
     {    
-        public AttackController()
-        {
-            
-        }
+        public AttackController() { }
+       
 
         [HttpGet]        
         public IActionResult Attack(int playerId, int damage)

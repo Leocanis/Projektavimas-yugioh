@@ -21,6 +21,7 @@ export class GameComponent implements OnDestroy, OnInit {
   private playerId :number;
   private fieldtype: string;
   private f: number;
+  private hand ='hand';
 
   constructor(
     private gameHubService: GameHubService,
