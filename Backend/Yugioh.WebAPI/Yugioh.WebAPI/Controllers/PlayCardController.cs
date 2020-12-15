@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Yugioh.Core.Entities;
+using Yugioh.Services.Hubs;
 using Yugioh.Services.Singleton;
 
 namespace Yugioh.WebAPI.Controllers
@@ -11,7 +12,11 @@ namespace Yugioh.WebAPI.Controllers
     [Route("api/playcard")]
     public class PlayCardController : Controller
     {
-        public PlayCardController() { }
+        private GameHub _gameHub;
+        public PlayCardController(GameHub gameHub) 
+        {
+            _gameHub = gameHub;
+        }
 
         [HttpGet]
         public IActionResult Playcard(string player, int index, int playerindex)
@@ -30,11 +35,13 @@ namespace Yugioh.WebAPI.Controllers
                 {
                     var game = GamesSingleton.GetInstance().games.Where(g => g.player1.id.ToString() == player).FirstOrDefault();
                     game.PlayCardFromHand(player, index);
+                    _gameHub.SendGame(game);
                 }
                 if (playerindex == 2)
                 {
                     var game = GamesSingleton.GetInstance().games.Where(g => g.player2.id.ToString() == player).FirstOrDefault();
                     game.PlayCardFromHand(player, index);
+                    _gameHub.SendGame(game);
                 }
                 return Ok();
             }

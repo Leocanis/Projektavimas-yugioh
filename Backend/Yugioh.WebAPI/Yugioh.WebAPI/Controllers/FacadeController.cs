@@ -50,7 +50,7 @@ namespace Yugioh.WebAPI.Controllers
                 {
                     case TurnPhases.AttackPhase:
                         var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
-                        strategy.decideStrategy(game, playerId);
+                        //strategy.decideStrategy(game, playerId);
                         _turnLogic.Attack(gameId, playerId);
                         break;
                     case TurnPhases.SecondPhase:
