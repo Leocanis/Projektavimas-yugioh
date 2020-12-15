@@ -10,10 +10,13 @@ import { Injectable } from '@angular/core';
 export class AttackService {
     constructor(private http: HttpClient) { }
 
-    private Url = environment.apiUrl + `/attack`;
+    private Url = environment.apiUrl + `/attack/attack`;
 
-    Attack(playerId: number, damage: number, defense: number, tdamage: number, tdefense: number) {
-        console.log('target damage: ' + tdamage.toString());
-        this.http.get(this.Url + '?playerId=' + playerId + '&damage=' + damage.toString()).subscribe();
+    Attack(gameId: string, playerId: string, cardId: string) {
+        this.http.get(this.Url + '?cardId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId).subscribe();
+    }
+
+    Target(gameId: string, playerId: string, cardId: string) {
+        this.http.get(this.Url + '?cardId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId).subscribe();
     }
 }

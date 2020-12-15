@@ -1,49 +1,55 @@
+import { TurnPhases } from './../../../shared/enums/turnPhases';
 import { BindingFlags } from '@angular/compiler/src/core';
 import { IcuPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
-import { Component, Input,  } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { bind } from '@angular/core/src/render3';
 import { updateBinding } from '@angular/core/src/render3/instructions';
+import { CardTypes } from 'src/app/shared/enums/cardTypes';
+import { ITurn } from 'src/app/shared/models/turn';
 import { AttackService } from '../../../core/services/attack.service';
 import { BattleService } from '../../../core/services/battle.service';
 import { PlaycardService } from '../../../core/services/playcard.service';
 import { ICard } from '../../../shared/models/card';
+import { appConstants } from 'src/app/shared/constants/constants';
 
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
 
     constructor(private attackService: AttackService, private battleservice: BattleService, private playcardService: PlaycardService) { }
 
-    @Input() i:number
+    @Input() i: number;
     @Input() field: string;
     @Input() playerId: number;
     @Input() player: string;
     @Input() card: ICard;
-    @Input() target: ICard = { playerId: 0, name: "", attack: 0, defense: 0, attacking: false, img: ""};//does not update
+    @Input() turnPhase: ITurn;
 
-    PlayCard(): void{
-        //console.log("playcard index: "+this.i);
-        //console.log("playcard player: "+this.player);
-        console.log("playcard playerindex: "+this.playerId);
-        this.playcardService.PlayCard(this.player,this.i,this.playerId);
-    }
-    Target(): void{
-        console.log("target");
-        console.log(this.card.playerId);
+    private loggedPlayerId: string;
 
-        console.log("Targeting: "+this.target.name);
-        console.log("Target stats:");
-        console.log("Damage:" +this.target.attack);
-        
+    ngOnInit(): void {
+        this.loggedPlayerId = sessionStorage.getItem(appConstants.sessionStoragePlayerId);
+        console.log('field');
+        console.log(this.playerId);
+        console.log(this.field);
     }
-    onAttack(): void {
-        console.log('from \'onAttack\' Method');
-        console.log('player in attack id:'+this.card.playerId);
-        
-        this.card.attacking = true;
-        this.battleservice.BattleObserver = true;
-        this.attackService.Attack(this.card.playerId, this.card.attack, this.card.defense, this.target.attack, this.target.defense);
+
+    TurnPhases(): typeof TurnPhases {
+        return TurnPhases;
+    }
+
+    PlayCard(): void {
+        this.playcardService.PlayCard(this.player, this.i, this.playerId);
+    }
+    Attack(): void {
+        this.attackService.Attack(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
+    }
+    Target(): void {
+        this.attackService.Target(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
+    }
+    Cancel(): void {
+        this.attackService.Target(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
     }
 }

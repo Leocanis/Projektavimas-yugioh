@@ -38,11 +38,11 @@
       <div class="row">
 
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field1.handfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field1 && game.field1.handfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card  [field] ='hand' [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.handfield[index]"></app-card>
+              <app-card  [field] ='hand' [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.handfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>
@@ -54,11 +54,11 @@
       <div class="row">
         
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field1.trapfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field1 && game.field1.trapfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.trapfield[index]"></app-card>
+              <app-card [field] ='spell' [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.trapfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>
@@ -69,11 +69,11 @@
       <div class="row">
 
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field1.monsterfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field1 && game.field1.monsterfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card  [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.monsterfield[index]"></app-card>
+              <app-card [field] ='monster' [player] ='game.player1.id' [i] = "index" [playerId] = 'playerId' [card]="game.field1.monsterfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>
@@ -86,11 +86,11 @@
       <div class="row">
         
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field2.monsterfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field2 && game.field2.monsterfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.monsterfield[index]"></app-card>
+              <app-card [field] ='monster' [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.monsterfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>
@@ -101,11 +101,11 @@
       <div class="row">
         
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field2.trapfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field2 && game.field2.trapfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.trapfield[index]"></app-card>
+              <app-card [field] ='spell' [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.trapfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>
@@ -116,11 +116,11 @@
       <div class="row">
         
         <div *ngFor="let i of numinrow; let index=index;">
-          <div *ngIf="game.field2.handfield[index]; then thenBlock else elseBlock;"></div>
+          <div *ngIf="game && game.field2 && game.field2.handfield[index]; then thenBlock else elseBlock;"></div>
           <ng-template #thenBlock>
             <div class="col2-lg border langelis">
               
-              <app-card [field] ='hand' [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.handfield[index]"></app-card>
+              <app-card [field] ='hand' [player] ='game.player2.id' [i] = "index"  [playerId] = 'playerId' [card]="game.field2.handfield[index]" [turnPhase]=game.turn></app-card>
 
             </div>
             </ng-template>

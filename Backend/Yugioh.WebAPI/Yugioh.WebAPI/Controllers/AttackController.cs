@@ -6,36 +6,64 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Core.Entities;
 using Yugioh.Services.Hubs;
+using Yugioh.Services.Logic.Attack;
 using Yugioh.Services.Singleton;
 
 namespace Yugioh.WebAPI.Controllers
 {
     [Route("api/attack")]
     public class AttackController : Controller
-    {    
-        public AttackController() { }
+    {
+        private AttackLogic _attackLogic;
+        public AttackController(AttackLogic attackLogic) 
+        {
+            _attackLogic = attackLogic;
+        }
        
 
-        [HttpGet]        
-        public IActionResult Attack(int playerId, int damage)
+        [HttpGet]
+        [Route("attack")]
+        public IActionResult Attack(Guid gameId, Guid playerId, Guid cardId)
         {
             try
             {
-                //var player = StaticClass.players.Where(p => p.Id != playerId).FirstOrDefault();
-                //player.PlayerHealth.HealthCount -= damage;
-                //_healthHubContext.Clients.All.SendAsync("SendHealth",
-                //    new
-                //    {
-                //        playerId = player.Id,
-                //        health = player.PlayerHealth
-                //    });
-
+                _attackLogic.Attack(gameId, playerId, cardId);
                 return Ok();
             }
             catch
             {
                 return BadRequest();
             }
-        }        
+        }
+
+        [HttpGet]
+        [Route("target")]
+        public IActionResult Target(Guid gameId, Guid playerId, Guid cardId)
+        {
+            try
+            {
+                _attackLogic.Target(gameId, playerId, cardId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        [Route("cancel")]
+        public IActionResult Cancel(Guid gameId, Guid playerId, Guid cardId)
+        {
+            try
+            {
+                _attackLogic.Cancel(gameId, playerId, cardId);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
     }
 }

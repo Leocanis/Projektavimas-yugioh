@@ -18,6 +18,7 @@ namespace Yugioh.Services.Logic.Command
         public override void ChangeTurnState(Game game, Guid playerId)
         {
             game.turn.phase = TurnPhases.AttackPhase;
+            game.turn.attackPhase = AttackPhases.Attacking;
             _gameHub.SendGame(game);
         }
 

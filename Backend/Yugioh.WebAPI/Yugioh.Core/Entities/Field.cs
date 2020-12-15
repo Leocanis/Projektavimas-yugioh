@@ -46,6 +46,30 @@ namespace Yugioh.Core.Entities
                 }
             }
         }
+
+        public void insertCardsIntoSpellField(Card[] cards)
+        {
+            int n = trapfieldCount;
+            int m = cards.Length;
+            if (n + m > 6)
+            {
+                m = 6 - n;
+            }
+
+            for (int i = 0; i < m; i++)
+            {
+                try
+                {
+                    //deck.carddeck.Add(cards[i]);
+                    trapfield[trapfieldCount++] = cards[i];
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         public void insertCardsIntoHandField(Card[] cards)
         {
             int n = handfieldCount;

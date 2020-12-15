@@ -49,7 +49,7 @@ namespace Yugioh.Services.Logic.Auth
                     newGame.player1.decktype = decktype;
                     newGame.player1.createDeck(decktype, 1);
                     //var cards = newGame.player1.drawCardsFromDeck(3);
-                    newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 3);
+                    newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 3);                    
                     GamesSingleton.GetInstance().games.Add(newGame);
                 }
                 else

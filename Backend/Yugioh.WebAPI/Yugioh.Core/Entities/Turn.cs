@@ -9,5 +9,6 @@ namespace Yugioh.Core.Entities
     {
         public Guid playerId { get; set; }
         public TurnPhases phase { get; set; }
+        public AttackPhases attackPhase { get; set; }
     }
 }

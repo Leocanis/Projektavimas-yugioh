@@ -15,26 +15,17 @@
     <div *ngIf="card.attack > 0">
         Defense: {{card.defense}}
     </div>
-    
+
 </div>
-<div *ngIf="card && playerId && playerId == card.playerId && field =='hand'">
+<div *ngIf="card && playerId && playerId == card.playerId && field =='hand' && 
+        (turnPhase.phase == 1 || turnPhase.phase == 3) && loggedPlayerId == player">
     <button (click)="PlayCard()">Play</button>
 </div>
-<!--
-<div *ngIf="card && playerId && playerId == card.playerId && field =='hand'">
-    <button (click)="PlayCard()">test</button>
+<div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId == player && card.attacked === 'flase'">
+    <button (click)="Attack()">Attack</button>
 </div>
-<div *ngIf="card &&  field =='hand'">
-    <button (click)="PlayCard()">test2</button>
+<div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId == player">
+    <button (click)="Target()">Target</button>
 </div>
--->
-<!--
-<div *ngIf="card && playerId && playerId == card.playerId ">
-    <button (click)="onAttack()">Attack</button>
-</div>
--->
-<!--
-<div *ngIf="card && playerId && playerId != card.playerId && playerId != null && playerId != 0">
-    <button (click)='Target()'>Target</button>
-</div>
--->

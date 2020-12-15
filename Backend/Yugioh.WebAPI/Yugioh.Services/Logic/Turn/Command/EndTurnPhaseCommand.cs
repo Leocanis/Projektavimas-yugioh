@@ -27,6 +27,7 @@ namespace Yugioh.Services.Logic.Command
                 game.turn.playerId = game.player1.id;
             }
             game.turn.phase = TurnPhases.MainPhase;
+            game.turn.attackPhase = AttackPhases.Other;
             _gameHub.SendGame(game);
         }
 
