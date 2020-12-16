@@ -24,7 +24,7 @@ namespace Yugioh.WebAPI.Controllers
             _turnLogic = turnLogic;
             drawcardcontroller = new DrawCardController();
             strategy = new Strategy();
-            attackcontroller = new AttackController();
+            //attackcontroller = new AttackController();
         }
 
         [Route("login")]
