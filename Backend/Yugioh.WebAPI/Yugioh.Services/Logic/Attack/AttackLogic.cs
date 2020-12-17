@@ -19,7 +19,15 @@ namespace Yugioh.Services.Logic.Attack
         public void Attack(Guid gameId, Guid playerId, Guid cardId)
         {
             var game = GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault();
+            if (game.player1.id == playerId)
+            {
+                var card = game.field1.monsterfield.Where(p => p.id == cardId).FirstOrDefault();
+                
+            }
+            else if (game.player2.id == playerId)
+            {
 
+            }
             _gameHub.SendGame(game);
         }
 

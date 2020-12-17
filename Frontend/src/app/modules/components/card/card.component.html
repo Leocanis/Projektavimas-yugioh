@@ -22,10 +22,10 @@
     <button (click)="PlayCard()">Play</button>
 </div>
 <div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
-        turnPhase.phase == 2  && loggedPlayerId == player && card.attacked === 'flase'">
+        turnPhase.phase == 2  && loggedPlayerId == player && card.attacked === false && turnPhase.attackPhase == 2">
     <button (click)="Attack()">Attack</button>
 </div>
 <div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
-        turnPhase.phase == 2  && loggedPlayerId == player">
+        turnPhase.phase == 2  && loggedPlayerId != player && turnPhase.attackPhase == 3">
     <button (click)="Target()">Target</button>
 </div>

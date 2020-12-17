@@ -17,14 +17,12 @@ namespace Yugioh.WebAPI.Controllers
         private TurnLogic _turnLogic;
         private DrawCardController drawcardcontroller;
         private Strategy strategy;
-        private AttackController attackcontroller;
         public FacadeController(AuthLogic authLogic, TurnLogic turnLogic)
         {
             _authLogic = authLogic;
             _turnLogic = turnLogic;
             drawcardcontroller = new DrawCardController();
             strategy = new Strategy();
-            attackcontroller = new AttackController();
         }
 
         [Route("login")]
@@ -50,7 +48,8 @@ namespace Yugioh.WebAPI.Controllers
                 {
                     case TurnPhases.AttackPhase:
                         var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
-                        //strategy.decideStrategy(game, playerId);
+                        if(game.gameType == GameTypes.AutoAttack)
+                            strategy.decideStrategy(game, playerId);
                         _turnLogic.Attack(gameId, playerId);
                         break;
                     case TurnPhases.SecondPhase:
