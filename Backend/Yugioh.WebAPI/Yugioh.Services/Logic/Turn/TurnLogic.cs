@@ -18,6 +18,10 @@ namespace Yugioh.Services.Logic
         {
             _gameHub = gameHub;
         }
+        public void UpdateView(Game game)
+        {
+            _gameHub.SendGame(game);
+        }
         public void Attack(Guid gameId, Guid playerId)
         {
             ICommand command = new AttackPhaseCommand(_gameHub);
