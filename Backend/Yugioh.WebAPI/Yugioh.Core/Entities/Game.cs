@@ -15,15 +15,15 @@ namespace Yugioh.Core.Entities
         public Turn turn { get; set; }
         public string message { get; set; }
 
-        public void DestroyMonster(Guid playerId, int index)
+        public void DestroyMonster(Game game, Guid playerId, Guid enemyid, int index)
         {
             if (player1.id == playerId)
             {
-                field1.removeCardFromMonsterField(index);
+                field1.removeCardFromMonsterField(index, game, player1, player2);
             }
             if (player2.id == playerId)
             {
-                field2.removeCardFromMonsterField(index);
+                field2.removeCardFromMonsterField(index, game, player2, player1);
             }
         }
         public void PlayCardFromHand(string playerId, int index)
@@ -31,24 +31,48 @@ namespace Yugioh.Core.Entities
             if (player1.id.ToString() == playerId)
             {
                 Card c = field1.removeCardFromHandField(index);
-                Card[] cs = { c };
                 if (c.type == Enums.CardTypes.Monster)
-                    field1.insertCardsIntoMonsterField(cs);
+                {
+                    Monster monster = (Monster)c;
+                    Monster[] cs = { monster };
+                    field1.insertCardsIntoMonsterField(cs, this, player1, player2);
+                }
+                    
                 else if (c.type == Enums.CardTypes.Spell)
+                {
+                    Spell spell = (Spell)c;
+                    Spell[] cs = { spell };
                     field1.insertCardsIntoSpellField(cs);
+                }
                 else if (c.type == Enums.CardTypes.Trap)
+                {
+                    Trap trap = (Trap)c;
+                    Trap[] cs = { trap };
                     field1.insertCardsIntoSpellField(cs);
+                }
             }
-            else if (player2.id.ToString() == playerId)
+            if (player2.id.ToString() == playerId)
             {
                 Card c = field2.removeCardFromHandField(index);
-                Card[] cs = { c };
                 if (c.type == Enums.CardTypes.Monster)
-                    field2.insertCardsIntoMonsterField(cs);
+                {
+                    Monster monster = (Monster)c;
+                    Monster[] cs = { monster };
+                    field2.insertCardsIntoMonsterField(cs, this, player2, player1);
+                }
+
                 else if (c.type == Enums.CardTypes.Spell)
+                {
+                    Spell spell = (Spell)c;
+                    Spell[] cs = { spell };
                     field2.insertCardsIntoSpellField(cs);
+                }
                 else if (c.type == Enums.CardTypes.Trap)
+                {
+                    Trap trap = (Trap)c;
+                    Trap[] cs = { trap };
                     field2.insertCardsIntoSpellField(cs);
+                }
             }
         }
         public void PlayerDrawCardsIntoHand(Guid playerId, int amount)

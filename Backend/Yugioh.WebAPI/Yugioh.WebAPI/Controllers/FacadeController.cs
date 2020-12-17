@@ -50,8 +50,22 @@ namespace Yugioh.WebAPI.Controllers
                 {
                     case TurnPhases.AttackPhase:
                         var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
-                        //strategy.decideStrategy(game, playerId);
-                        _turnLogic.Attack(gameId, playerId);
+                        if(game.player1.id == playerId)
+                        {
+                            var enemyid = game.player2.id;
+                            var player = game.player1;
+                            var enemy = game.player2;
+                            strategy.decideStrategy(game, player, enemy);
+                        }
+                        else if (game.player2.id == playerId)
+                        {
+                            var enemyid = game.player1.id;
+                            var player = game.player2;
+                            var enemy = game.player1;
+                            strategy.decideStrategy(game, player, enemy);
+                        }
+                        _turnLogic.UpdateView(game);
+                        //_turnLogic.Attack(gameId, playerId);
                         break;
                     case TurnPhases.SecondPhase:
                         _turnLogic.Second(gameId, playerId);

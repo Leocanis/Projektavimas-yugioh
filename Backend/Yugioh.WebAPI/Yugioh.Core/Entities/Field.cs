@@ -11,20 +11,20 @@ namespace Yugioh.Core.Entities
         public int handfieldCount;
         public Card[] trapfield { get; set; }
         public int trapfieldCount;
-        public Card[] monsterfield { get; set; }
+        public Monster[] monsterfield { get; set; }
         public int monsterfieldCount;
 
         public Field()
         {
             handfield = new Card[6];
             trapfield = new Card[6];
-            monsterfield = new Card[6];
+            monsterfield = new Monster[6];
             handfieldCount = 0;
             trapfieldCount = 0;
             monsterfieldCount = 0;
         }
 
-        public void insertCardsIntoMonsterField(Card[] cards)
+        public void insertCardsIntoMonsterField(Monster[] cards, Game game, Player player, Player enemy)
         {
             int n = monsterfieldCount;
             int m = cards.Length;
@@ -39,6 +39,7 @@ namespace Yugioh.Core.Entities
                 {
                     //deck.carddeck.Add(cards[i]);
                     monsterfield[monsterfieldCount++] = cards[i];
+                    cards[i].OnPlay(game, player, enemy);
                 }
                 catch
                 {
@@ -111,13 +112,14 @@ namespace Yugioh.Core.Entities
             return c;
         }
 
-        public Card removeCardFromMonsterField(int index)
+        public Card removeCardFromMonsterField(int index, Game game, Player player, Player enemy)
         {
-            Card c = monsterfield[index];
+            Monster c = monsterfield[index];
             if (c == null)
             {
                 return c;
             }
+            c.OnDeath(game, player, enemy);
             for (int i = index; i < monsterfield.Length - 1; i++)
             {
                 monsterfield[i] = monsterfield[i + 1];
