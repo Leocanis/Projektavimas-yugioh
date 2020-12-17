@@ -33,7 +33,9 @@ export class CardComponent implements OnInit {
     ngOnInit(): void {
         this.gameId = sessionStorage.getItem(appConstants.sessionStorageGameId);
         this.loggedPlayerId = sessionStorage.getItem(appConstants.sessionStoragePlayerId);
-        console.log(this.card);
+        console.log(this.player);
+        console.log(this.card.playerId);
+        console.log(this.loggedPlayerId);
     }
 
     PlayCard(): void {

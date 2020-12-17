@@ -1,3 +1,4 @@
+import { CardAttackPhase } from '../enums/cardAttackPhase';
 import { CardTypes } from '../enums/cardTypes';
 
 export interface ICard {
@@ -9,4 +10,5 @@ export interface ICard {
     img: string;
     attacked: boolean;
     type: CardTypes;
+    attackPhase: CardAttackPhase;
 }

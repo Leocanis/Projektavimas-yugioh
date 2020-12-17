@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
@@ -19,6 +20,15 @@ namespace Yugioh.Services.Logic.Command
         {
             game.turn.phase = TurnPhases.AttackPhase;
             game.turn.attackPhase = AttackPhases.Attacking;
+            if (game.player1.id == playerId)
+            {
+                game.field1.monsterfield.Where(p => p != null).ToList().ForEach(p => p.attackPhase = CardAttackPhase.Waiting);                
+
+            }
+            else if (game.player2.id == playerId)
+            {
+                game.field2.monsterfield.Where(p => p != null).ToList().ForEach(p => p.attackPhase = CardAttackPhase.Waiting);
+            }
             _gameHub.SendGame(game);
         }
 

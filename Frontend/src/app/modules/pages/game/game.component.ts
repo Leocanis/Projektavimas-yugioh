@@ -33,18 +33,19 @@ export class GameComponent implements OnDestroy, OnInit {
   ) {
     this.gameHubSubscription = this.gameHubService.getGame().subscribe(
       (game) => {
+        console.log(game);
         this.game = game;
 
-        console.log(game.field1);
-        console.log(game.field2);
-        console.log(game.turn.playerId);
+        // console.log(game.field1);
+        // console.log(game.field2);
+        // console.log(game.turn.playerId);
         if (game.turn.playerId === game.player1.id) {
           this.playerId = 1;
         }
         if (game.turn.playerId === game.player2.id) {
           this.playerId = 2;
         }
-        console.log('player id:' + this.playerId);
+        // console.log('player id:' + this.playerId);
         this.checkTurnPhase();
       });
   }
