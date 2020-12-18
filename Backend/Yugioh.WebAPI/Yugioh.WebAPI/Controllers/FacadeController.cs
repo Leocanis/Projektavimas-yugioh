@@ -86,7 +86,7 @@ namespace Yugioh.WebAPI.Controllers
                     default:
                         throw new NotImplementedException();
                 }
-                _turnLogic.UpdateView(game);
+                
                 return Ok();
             }
             catch
