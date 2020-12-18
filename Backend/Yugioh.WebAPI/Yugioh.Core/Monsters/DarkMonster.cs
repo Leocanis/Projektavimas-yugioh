@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Yugioh.Core.Classes;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
+using Yugioh.Core.Logic.Flyweight;
 
 namespace Yugioh.Core.Monsters
 {
@@ -19,7 +20,7 @@ namespace Yugioh.Core.Monsters
             this.img = "";
             //this.attack = 100;
             //this.defense = 100;
-            this.imgBytes = Convert.ToBase64String(File.ReadAllBytes("Assets/CardImages/dark_magician.jpg"));
+            this.imgBytes = ImageFactory.GetImage("Assets/CardImages/dark_magician.jpg");
             this.attacked = false;
             this.type = CardTypes.Monster;
         }

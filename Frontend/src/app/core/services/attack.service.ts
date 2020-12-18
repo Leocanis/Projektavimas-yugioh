@@ -13,14 +13,14 @@ export class AttackService {
     private Url = environment.apiUrl + `/attack/`;
 
     Attack(gameId: string, playerId: string, cardId: string) {
-        this.http.get(this.Url + 'attack?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId).subscribe();
+        this.http.get(this.Url + 'action?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId + '&state=1').subscribe();
     }
 
     Target(gameId: string, playerId: string, cardId: string) {
-        this.http.get(this.Url + 'target?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId).subscribe();
+        this.http.get(this.Url + 'action?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId + '&state=2').subscribe();
     }
 
     Cancel(gameId: string, playerId: string, cardId: string) {
-        this.http.get(this.Url + 'cancel?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId).subscribe();
+        this.http.get(this.Url + 'action?gameId=' + gameId + '&playerId=' + playerId + '&cardId=' + cardId + '&state=3').subscribe();
     }
 }

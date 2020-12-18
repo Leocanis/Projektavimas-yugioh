@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
+using Yugioh.Core.Logic.Flyweight;
 
 namespace Yugioh.Core.Monsters
 {
@@ -16,7 +17,7 @@ namespace Yugioh.Core.Monsters
             this.name = "LightMonster";
             this.playerId = id;
             this.img = "";
-            this.imgBytes = Convert.ToBase64String(File.ReadAllBytes("Assets/CardImages/blue_eyes_white_dragon.jpg"));
+            this.imgBytes = ImageFactory.GetImage("Assets/CardImages/blue_eyes_white_dragon.jpg");
             //this.attack = 100;
             //this.defense = 100;
             this.attacked = false;
