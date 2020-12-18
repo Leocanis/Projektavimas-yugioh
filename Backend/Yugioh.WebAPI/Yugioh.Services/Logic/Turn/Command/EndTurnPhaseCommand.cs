@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
@@ -14,7 +15,7 @@ namespace Yugioh.Services.Logic.Command
         public EndTurnPhaseCommand(GameHub gameHub)
         {
             _gameHub = gameHub;
-        }        
+        }
 
         public override void ChangeTurnState(Game game, Guid playerId)
         {
@@ -28,6 +29,23 @@ namespace Yugioh.Services.Logic.Command
             }
             game.turn.phase = TurnPhases.MainPhase;
             game.turn.attackPhase = AttackPhases.Other;
+            if (game.player1.id == playerId)
+            {
+                game.field1.monsterfield.Where(p => p != null).ToList().ForEach(p =>
+                {
+                    p.attackPhase = CardAttackPhase.Other;
+                    p.attacked = false;
+                });
+
+            }
+            else if (game.player2.id == playerId)
+            {
+                game.field2.monsterfield.Where(p => p != null).ToList().ForEach(p =>
+                {
+                    p.attackPhase = CardAttackPhase.Other;
+                    p.attacked = false;
+                });
+            }
             _gameHub.SendGame(game);
         }
 

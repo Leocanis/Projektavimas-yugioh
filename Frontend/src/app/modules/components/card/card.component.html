@@ -4,7 +4,7 @@
     </b>
 </div>
 <div *ngIf="card">
-    <img src={{card.img}} alt={{card.name}} class="center">
+    <img [src]="image" alt={{card.name}} class="center" />
 </div>
 <div *ngIf="card">
     <div *ngIf="card.attack > 0">
@@ -17,15 +17,19 @@
     </div>
 
 </div>
-<div *ngIf="card && playerId && playerId == card.playerId && field =='hand' && 
+<div *ngIf="card && playerId && loggedPlayerId == turnPhase.playerId && field =='hand' && 
         (turnPhase.phase == 1 || turnPhase.phase == 3) && loggedPlayerId == player">
     <button (click)="PlayCard()">Play</button>
 </div>
-<div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
-        turnPhase.phase == 2  && loggedPlayerId == player && card.attacked === 'flase'">
+<div *ngIf="card && playerId && loggedPlayerId == turnPhase.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId == player && card.attacked === false && turnPhase.attackPhase === 2">
     <button (click)="Attack()">Attack</button>
 </div>
-<div *ngIf="card && playerId && playerId == card.playerId && field =='monster' && 
-        turnPhase.phase == 2  && loggedPlayerId == player">
+<div *ngIf="card && playerId && loggedPlayerId == turnPhase.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId != player && turnPhase.attackPhase === 3">
     <button (click)="Target()">Target</button>
+</div>
+<div *ngIf="card && playerId && loggedPlayerId == turnPhase.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId == player && card.attackPhase === 3 && turnPhase.attackPhase === 3">
+    <button (click)="Cancel()">Cancel</button>
 </div>

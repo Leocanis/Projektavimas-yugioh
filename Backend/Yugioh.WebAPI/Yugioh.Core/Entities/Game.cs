@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using System.Text;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Classes;
+using Yugioh.Core.Enums;
+
 namespace Yugioh.Core.Entities
 {
     public class Game
     {
+        public Game()
+        {
+
+        }
+        public Game(Game game)
+        {
+            this.id = game.id;
+            this.player1 = game.player1;
+            this.gameType = game.gameType;
+        }
+
         public Guid id { get; set; }
         public Player player1 { get; set; }
         public Player player2 { get; set; }
@@ -14,6 +27,7 @@ namespace Yugioh.Core.Entities
         public Field field2 { get; set; }
         public Turn turn { get; set; }
         public string message { get; set; }
+        public GameTypes gameType { get; set; }
 
         public void DestroyMonster(Game game, Guid playerId, Guid enemyid, int index)
         {

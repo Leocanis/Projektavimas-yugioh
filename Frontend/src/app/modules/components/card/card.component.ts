@@ -15,6 +15,7 @@ import { appConstants } from 'src/app/shared/constants/constants';
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
 
@@ -27,29 +28,29 @@ export class CardComponent implements OnInit {
     @Input() card: ICard;
     @Input() turnPhase: ITurn;
 
+    private gameId: string;
     private loggedPlayerId: string;
+    private image: string;
 
     ngOnInit(): void {
+        this.gameId = sessionStorage.getItem(appConstants.sessionStorageGameId);
         this.loggedPlayerId = sessionStorage.getItem(appConstants.sessionStoragePlayerId);
-        console.log('field');
-        console.log(this.playerId);
-        console.log(this.field);
-    }
-
-    TurnPhases(): typeof TurnPhases {
-        return TurnPhases;
+        this.image = 'data:image/jpeg;base64,' + this.card.imgBytes;
+        console.log(this.player);
+        console.log(this.card.playerId);
+        console.log(this.loggedPlayerId);
     }
 
     PlayCard(): void {
         this.playcardService.PlayCard(this.player, this.i, this.playerId);
     }
     Attack(): void {
-        this.attackService.Attack(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
+        this.attackService.Attack(this.gameId, this.loggedPlayerId, this.card.id);
     }
     Target(): void {
-        this.attackService.Target(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
+        this.attackService.Target(this.gameId, this.loggedPlayerId, this.card.id);
     }
     Cancel(): void {
-        this.attackService.Target(sessionStorage.getItem(appConstants.sessionStorageGameId), this.loggedPlayerId, this.card.id);
+        this.attackService.Cancel(this.gameId, this.loggedPlayerId, this.card.id);
     }
 }

@@ -17,14 +17,12 @@ namespace Yugioh.WebAPI.Controllers
         private TurnLogic _turnLogic;
         private DrawCardController drawcardcontroller;
         private Strategy strategy;
-        private AttackController attackcontroller;
         public FacadeController(AuthLogic authLogic, TurnLogic turnLogic)
         {
             _authLogic = authLogic;
             _turnLogic = turnLogic;
             drawcardcontroller = new DrawCardController();
             strategy = new Strategy();
-            //attackcontroller = new AttackController();
         }
 
         [Route("login")]
@@ -50,22 +48,33 @@ namespace Yugioh.WebAPI.Controllers
                 {
                     case TurnPhases.AttackPhase:
                         var game = GamesSingleton.GetInstance().games.Where(g => g.id == gameId).FirstOrDefault();
-                        if(game.player1.id == playerId)
+
+
+
+
+                        if (game.gameType == GameTypes.AutoAttack)
                         {
-                            var enemyid = game.player2.id;
-                            var player = game.player1;
-                            var enemy = game.player2;
-                            strategy.decideStrategy(game, player, enemy);
+                            if (game.player1.id == playerId)
+                            {
+                                var enemyid = game.player2.id;
+                                var player = game.player1;
+                                var enemy = game.player2;
+                                strategy.decideStrategy(game, player, enemy);
+                            }
+                            else if (game.player2.id == playerId)
+                            {
+                                var enemyid = game.player1.id;
+                                var player = game.player2;
+                                var enemy = game.player1;
+                                strategy.decideStrategy(game, player, enemy);
+                            }
+                            _turnLogic.UpdateView(game);
                         }
-                        else if (game.player2.id == playerId)
+                        else
                         {
-                            var enemyid = game.player1.id;
-                            var player = game.player2;
-                            var enemy = game.player1;
-                            strategy.decideStrategy(game, player, enemy);
+                            _turnLogic.Attack(gameId, playerId);
                         }
-                        
-                        //_turnLogic.Attack(gameId, playerId);
+
                         break;
                     case TurnPhases.SecondPhase:
                         _turnLogic.Second(gameId, playerId);

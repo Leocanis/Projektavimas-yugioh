@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Enums;
+using Yugioh.Core.Logic.Flyweight;
 
 namespace Yugioh.Core.Monsters
 {
@@ -15,6 +17,7 @@ namespace Yugioh.Core.Monsters
             this.name = "EarthMonster";
             this.playerId = id;
             this.img = "";
+            this.imgBytes = ImageFactory.GetImage("Assets/CardImages/celtic_guardian.jpg");
             //this.attack = 100;
             //this.defense = 100;
             this.attacked = false;
