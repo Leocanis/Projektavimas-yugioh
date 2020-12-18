@@ -9,6 +9,17 @@ namespace Yugioh.Core.Entities
 {
     public class Game
     {
+        public Game()
+        {
+
+        }
+        public Game(Game game)
+        {
+            this.id = game.id;
+            this.player1 = game.player1;
+            this.gameType = game.gameType;
+        }
+
         public Guid id { get; set; }
         public Player player1 { get; set; }
         public Player player2 { get; set; }
