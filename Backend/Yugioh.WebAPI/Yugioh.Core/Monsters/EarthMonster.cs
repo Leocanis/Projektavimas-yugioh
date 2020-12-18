@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Yugioh.Core.Entities;
@@ -15,6 +16,7 @@ namespace Yugioh.Core.Monsters
             this.name = "EarthMonster";
             this.playerId = id;
             this.img = "";
+            this.imgBytes = Convert.ToBase64String(File.ReadAllBytes("Assets/CardImages/celtic_guardian.jpg"));
             //this.attack = 100;
             //this.defense = 100;
             this.attacked = false;

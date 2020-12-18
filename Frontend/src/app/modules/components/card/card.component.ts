@@ -15,6 +15,7 @@ import { appConstants } from 'src/app/shared/constants/constants';
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
 
@@ -29,10 +30,12 @@ export class CardComponent implements OnInit {
 
     private gameId: string;
     private loggedPlayerId: string;
+    private image: string;
 
     ngOnInit(): void {
         this.gameId = sessionStorage.getItem(appConstants.sessionStorageGameId);
         this.loggedPlayerId = sessionStorage.getItem(appConstants.sessionStoragePlayerId);
+        this.image = 'data:image/jpeg;base64,' + this.card.imgBytes;
         console.log(this.player);
         console.log(this.card.playerId);
         console.log(this.loggedPlayerId);

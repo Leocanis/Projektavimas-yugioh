@@ -15,6 +15,7 @@ namespace Yugioh.Core.Classes
         public int attack { get; set; }
         public int defense { get; set; }
         public string img { get; set; }
+        public string imgBytes { get; set; }
         public bool attacked { get; set; }
         public CardTypes type { get; set; }
         public CardAttackPhase attackPhase { get; set; }

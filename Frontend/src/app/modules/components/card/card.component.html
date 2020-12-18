@@ -4,7 +4,7 @@
     </b>
 </div>
 <div *ngIf="card">
-    <img src={{card.img}} alt={{card.name}} class="center">
+    <img [src]="image" alt={{card.name}} class="center" />
 </div>
 <div *ngIf="card">
     <div *ngIf="card.attack > 0">

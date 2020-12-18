@@ -19,17 +19,32 @@ namespace Yugioh.Services.Logic.Attack
 
         public void Attack(Guid gameId, Guid playerId, Guid cardId)
         {
-            var game = GamesSingleton.GetInstance().games.Where(p =>p.id == gameId).FirstOrDefault();
+            var game = GamesSingleton.GetInstance().games.Where(p => p.id == gameId).FirstOrDefault();
             if (game.player1.id == playerId)
             {
                 var card = game.field1.monsterfield.Where(p => p != null && p.id == cardId).FirstOrDefault();
-                card.attackPhase = CardAttackPhase.Attacking;
-                
+                if (game.field2.monsterfield.Where(p => p != null).Count() > 0)
+                {
+                    card.attackPhase = CardAttackPhase.Attacking;
+                }
+                else
+                {
+                    card.attackPhase = CardAttackPhase.Attacked;
+                    game.player2.playerHealth.healthCount -= card.attack;
+                }
             }
             else if (game.player2.id == playerId)
             {
                 var card = game.field2.monsterfield.Where(p => p != null && p.id == cardId).FirstOrDefault();
-                card.attackPhase = CardAttackPhase.Attacking;
+                if (game.field1.monsterfield.Where(p => p != null).Count() > 0)
+                {
+                    card.attackPhase = CardAttackPhase.Attacking;
+                }
+                else
+                {
+                    card.attackPhase = CardAttackPhase.Attacked;
+                    game.player1.playerHealth.healthCount -= card.attack;
+                }
             }
             game.turn.attackPhase = AttackPhases.Targeting;
             _gameHub.SendGame(game);
@@ -43,11 +58,11 @@ namespace Yugioh.Services.Logic.Attack
                 var attackingCard = game.field1.monsterfield.Where(p => p != null && p.attackPhase == CardAttackPhase.Attacking).FirstOrDefault();
                 var targetCard = game.field2.monsterfield.Where(p => p != null && p.id == cardId).FirstOrDefault();
 
-                if(attackingCard.attack > targetCard.defense)
+                if (attackingCard.attack > targetCard.defense)
                 {
-                    for(int i = 0; i< game.field2.monsterfield.Length; i++)
+                    for (int i = 0; i < game.field2.monsterfield.Length; i++)
                     {
-                        if(game.field2.monsterfield[i] != null && targetCard.id == game.field2.monsterfield[i].id)
+                        if (game.field2.monsterfield[i] != null && targetCard.id == game.field2.monsterfield[i].id)
                         {
                             game.field2.monsterfield[i] = null;
                         }
@@ -55,7 +70,7 @@ namespace Yugioh.Services.Logic.Attack
                     attackingCard.attackPhase = CardAttackPhase.Attacked;
                     attackingCard.attacked = true;
                 }
-                else if(attackingCard.attack < targetCard.defense)
+                else if (attackingCard.attack < targetCard.defense)
                 {
                     for (int i = 0; i < game.field1.monsterfield.Length; i++)
                     {
@@ -65,7 +80,7 @@ namespace Yugioh.Services.Logic.Attack
                         }
                     }
                 }
-                else if(attackingCard.attack == targetCard.defense)
+                else if (attackingCard.attack == targetCard.defense)
                 {
                     for (int i = 0; i < game.field2.monsterfield.Length; i++)
                     {

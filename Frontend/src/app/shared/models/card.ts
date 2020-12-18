@@ -8,6 +8,7 @@ export interface ICard {
     attack: number;
     defense: number;
     img: string;
+    imgBytes: string;
     attacked: boolean;
     type: CardTypes;
     attackPhase: CardAttackPhase;
