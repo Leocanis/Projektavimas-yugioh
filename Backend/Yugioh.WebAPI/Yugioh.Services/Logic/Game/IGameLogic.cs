@@ -5,7 +5,7 @@ using Yugioh.Core.Entities;
 
 namespace Yugioh.Services.Logic
 {
-    public interface IGame
+    public interface IGameLogic
     {
         Game GetGame(Guid gameId);
     }

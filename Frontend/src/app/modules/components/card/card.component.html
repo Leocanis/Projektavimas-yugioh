@@ -29,3 +29,7 @@
         turnPhase.phase == 2  && loggedPlayerId != player && turnPhase.attackPhase === 3">
     <button (click)="Target()">Target</button>
 </div>
+<div *ngIf="card && playerId && loggedPlayerId == turnPhase.playerId && field =='monster' && 
+        turnPhase.phase == 2  && loggedPlayerId == player && card.attackPhase === 3 && turnPhase.attackPhase === 3">
+    <button (click)="Cancel()">Cancel</button>
+</div>

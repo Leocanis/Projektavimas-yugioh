@@ -13,7 +13,7 @@ namespace Yugioh.Services.Logic.Attack.State
         }
         public void Handle(Guid gameId, Guid playerId, Guid cardId)
         {
-            _attackLogic.Target(gameId, playerId, cardId);
+            _attackLogic.Cancel(gameId, playerId, cardId);
         }
     }
 }

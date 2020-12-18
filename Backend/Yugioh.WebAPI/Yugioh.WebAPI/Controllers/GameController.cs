@@ -11,7 +11,7 @@ namespace Yugioh.WebAPI.Controllers
     [Route("api/game")]
     public class GameController : Controller
     {
-        IGame _gameProxy;
+        IGameLogic _gameProxy;
 
         public GameController ()
         {

@@ -7,7 +7,7 @@ using Yugioh.Services.Singleton;
 
 namespace Yugioh.Services.Logic
 {
-    public class GameReal : IGame
+    public class GameReal : IGameLogic
     {
         public Game GetGame(Guid gameId)
         {

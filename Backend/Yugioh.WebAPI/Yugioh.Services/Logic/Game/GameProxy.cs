@@ -7,9 +7,9 @@ using Yugioh.Services.Singleton;
 
 namespace Yugioh.Services.Logic
 {
-    public class GameProxy : IGame
+    public class GameProxy : IGameLogic
     {
-        IGame _realSubject;
+        IGameLogic _realSubject;
         public GameProxy() {
             _realSubject = new GameReal();
         }
