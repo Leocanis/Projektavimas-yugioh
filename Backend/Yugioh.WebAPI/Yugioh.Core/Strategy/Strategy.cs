@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Yugioh.Core.Classes;
 using Yugioh.Core.Entities;
-
+using Yugioh.Core.Iterator;
 namespace Yugioh.Core.Strategy
 {
     public class Strategy
@@ -14,7 +14,50 @@ namespace Yugioh.Core.Strategy
             {
                 var playermonsterfield = game.field1;
                 var enemymonsterfield = game.field2;
-                for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
+                MonsterFieldIterator piter = new MonsterFieldIterator();
+                MonsterFieldIterator eiter = new MonsterFieldIterator();
+                piter.DictBySWeakest(playermonsterfield.monsterfield, playermonsterfield.monsterfieldCount);
+                eiter.DictByStrongest(enemymonsterfield.monsterfield, enemymonsterfield.monsterfieldCount);
+
+                for (int i = 0; i < piter.Count; i++)
+                {
+                    Monster monster = piter.GetKey(i);
+                    if (eiter.Count > 0)
+                    {
+                        MonsterAttack(game, player, enemy, monster, piter.GetValue(i), eiter.GetValue(0));
+                        piter.Remove(piter.Pair(i).Key);
+                        eiter.Remove(eiter.Pair(0).Key);
+                        i--;
+                    }
+                    else if (eiter.Count == 0)
+                    {
+                        PlayerAttack(game, player, enemy, piter.GetKey(i).attack, monster);
+                    }
+                    else
+                    {
+                        HoldAttack();
+                    }
+                }
+                /*foreach(var pm in piter)
+                {
+                    Monster monster = piter.GetKey(index);
+                    if(eiter.Count > 0)
+                    {
+                        MonsterAttack(game, player, enemy, monster, pm.Value, eiter.GetValue(0));
+                        piter.Remove(pm);
+                        eiter.Remove(eiter.GetKey(0));
+                    }
+                    else if(eiter.Count == 0)
+                    {
+                        PlayerAttack(game, player, enemy, pm.Key.attack, monster);
+                    }
+                    else
+                    {
+                        HoldAttack();
+                    }
+                    index++;
+                }*/
+                /*for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
                 {
                     Monster monster = playermonsterfield.monsterfield[i];
                     if (enemymonsterfield.monsterfieldCount > 0)
@@ -29,13 +72,37 @@ namespace Yugioh.Core.Strategy
                     {
                         HoldAttack();
                     }
-                }
+                }*/
             }
             if (game.player2.id == player.id)
             {
                 var playermonsterfield = game.field2;
                 var enemymonsterfield = game.field1;
-                for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
+                MonsterFieldIterator piter = new MonsterFieldIterator();
+                MonsterFieldIterator eiter = new MonsterFieldIterator();
+                piter.DictBySWeakest(playermonsterfield.monsterfield, playermonsterfield.monsterfieldCount);
+                eiter.DictByStrongest(enemymonsterfield.monsterfield, enemymonsterfield.monsterfieldCount);
+
+                for (int i = 0; i < piter.Count; i++)
+                {
+                    Monster monster = piter.GetKey(i);
+                    if (eiter.Count > 0)
+                    {
+                        MonsterAttack(game, player, enemy, monster, piter.GetValue(i), eiter.GetValue(0));
+                        piter.Remove(piter.Pair(i).Key);
+                        eiter.Remove(eiter.Pair(0).Key);
+                        i--;
+                    }
+                    else if (eiter.Count == 0)
+                    {
+                        PlayerAttack(game, player, enemy, piter.GetKey(i).attack, monster);
+                    }
+                    else
+                    {
+                        HoldAttack();
+                    }
+                }
+                /*for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
                 {
                     Monster monster = playermonsterfield.monsterfield[i];
                     if (enemymonsterfield.monsterfieldCount > 0)
@@ -50,7 +117,7 @@ namespace Yugioh.Core.Strategy
                     {
                         HoldAttack();
                     }
-                }
+                }*/
             }
         }
         /*public void decideStrategy(Game game, Guid playerid)
@@ -110,6 +177,12 @@ namespace Yugioh.Core.Strategy
             }*/
             monster.OnPlayerAttack(game, player, target);
             target.playerHealth.healthCount -= damage;
+        }
+        public void MonsterAttack(Game game, Player player, Player enemy, Monster monster, int monsterindex1, int monsterindex2)
+        {
+            monster.OnAttack(game, player, enemy);
+            game.field1.removeCardFromMonsterField(monsterindex1, game, player, enemy);
+            game.field2.removeCardFromMonsterField(monsterindex2, game, player, enemy);
         }
         public void MonsterAttack(Game game, Player player, Player enemy, Monster monster)
         {

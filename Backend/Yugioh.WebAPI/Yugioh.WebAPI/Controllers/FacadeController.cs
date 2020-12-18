@@ -64,7 +64,7 @@ namespace Yugioh.WebAPI.Controllers
                             var enemy = game.player1;
                             strategy.decideStrategy(game, player, enemy);
                         }
-                        _turnLogic.UpdateView(game);
+                        
                         //_turnLogic.Attack(gameId, playerId);
                         break;
                     case TurnPhases.SecondPhase:
@@ -77,6 +77,7 @@ namespace Yugioh.WebAPI.Controllers
                     default:
                         throw new NotImplementedException();
                 }
+                _turnLogic.UpdateView(game);
                 return Ok();
             }
             catch

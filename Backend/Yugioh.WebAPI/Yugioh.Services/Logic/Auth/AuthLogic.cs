@@ -33,7 +33,7 @@ namespace Yugioh.Services.Logic.Auth
                 newGame.player1.decktype = decktype;
                 newGame.player1.createDeck(decktype, 1);
                 //newGame.player1.drawCardsFromDeck(3);
-                newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 3);
+                newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 5);
                 GamesSingleton.GetInstance().games.Add(newGame);
             }
             else
@@ -49,7 +49,7 @@ namespace Yugioh.Services.Logic.Auth
                     newGame.player1.decktype = decktype;
                     newGame.player1.createDeck(decktype, 1);
                     //var cards = newGame.player1.drawCardsFromDeck(3);
-                    newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 3);                    
+                    newGame.PlayerDrawCardsIntoHand(newGame.player1.id, 5);                    
                     GamesSingleton.GetInstance().games.Add(newGame);
                 }
                 else
@@ -62,7 +62,7 @@ namespace Yugioh.Services.Logic.Auth
                     game.player2.decktype = decktype;
                     game.player2.createDeck(decktype, 2);
                     response.gameId = game.id;
-                    game.PlayerDrawCardsIntoHand(game.player2.id, 3);
+                    game.PlayerDrawCardsIntoHand(game.player2.id, 5);
                     _gameLogic.StartGame(game);
                     _gameHub.SendGame(game);
                 }
