@@ -14,7 +14,7 @@ namespace Yugioh.Services.Logic
             game.turn.phase = TurnPhases.MainPhase;
             game.turn.attackPhase = AttackPhases.Other;
             game.turn.playerId = game.player1.id;
-            game.gameType = GameTypes.Normal;
+            game.gameType = GameTypes.AutoAttack;
         }
     }
 }

@@ -18,8 +18,6 @@ namespace Yugioh.Core.Monsters
             this.name = "DarkMonster";
             this.playerId = playerid;
             this.img = "";
-            //this.attack = 100;
-            //this.defense = 100;
             this.imgBytes = ImageFactory.GetImage("Assets/CardImages/dark_magician.jpg");
             this.attacked = false;
             this.type = CardTypes.Monster;

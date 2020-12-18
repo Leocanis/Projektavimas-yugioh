@@ -18,8 +18,6 @@ namespace Yugioh.Core.Monsters
             this.playerId = id;
             this.img = "";
             this.imgBytes = ImageFactory.GetImage("Assets/CardImages/celtic_guardian.jpg");
-            //this.attack = 100;
-            //this.defense = 100;
             this.attacked = false;
             this.type = CardTypes.Monster;
         }

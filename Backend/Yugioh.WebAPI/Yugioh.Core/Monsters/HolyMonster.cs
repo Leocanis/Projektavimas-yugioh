@@ -15,8 +15,6 @@ namespace Yugioh.Core.Monsters
             this.name = "HolyMonster";
             this.playerId = id;
             this.img = "";
-            //this.attack = 100;
-            //this.defense = 100;
             this.attacked = false;
             this.type = CardTypes.Monster;
         }

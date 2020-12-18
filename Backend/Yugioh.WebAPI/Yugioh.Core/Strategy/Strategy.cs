@@ -38,41 +38,6 @@ namespace Yugioh.Core.Strategy
                         HoldAttack();
                     }
                 }
-                /*foreach(var pm in piter)
-                {
-                    Monster monster = piter.GetKey(index);
-                    if(eiter.Count > 0)
-                    {
-                        MonsterAttack(game, player, enemy, monster, pm.Value, eiter.GetValue(0));
-                        piter.Remove(pm);
-                        eiter.Remove(eiter.GetKey(0));
-                    }
-                    else if(eiter.Count == 0)
-                    {
-                        PlayerAttack(game, player, enemy, pm.Key.attack, monster);
-                    }
-                    else
-                    {
-                        HoldAttack();
-                    }
-                    index++;
-                }*/
-                /*for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
-                {
-                    Monster monster = playermonsterfield.monsterfield[i];
-                    if (enemymonsterfield.monsterfieldCount > 0)
-                    {
-                        MonsterAttack(game, player, enemy, monster);
-                    }
-                    else if (enemymonsterfield.monsterfieldCount == 0)
-                    {
-                        PlayerAttack(game, player, enemy, playermonsterfield.monsterfield[i].attack, monster);
-                    }
-                    else
-                    {
-                        HoldAttack();
-                    }
-                }*/
             }
             if (game.player2.id == player.id)
             {
@@ -102,79 +67,11 @@ namespace Yugioh.Core.Strategy
                         HoldAttack();
                     }
                 }
-                /*for (int i = playermonsterfield.monsterfieldCount - 1; i >= 0; i--)
-                {
-                    Monster monster = playermonsterfield.monsterfield[i];
-                    if (enemymonsterfield.monsterfieldCount > 0)
-                    {
-                        MonsterAttack(game, player, enemy, monster);
-                    }
-                    else if (enemymonsterfield.monsterfieldCount == 0)
-                    {
-                        PlayerAttack(game, player, enemy, playermonsterfield.monsterfield[i].attack, monster);
-                    }
-                    else
-                    {
-                        HoldAttack();
-                    }
-                }*/
             }
         }
-        /*public void decideStrategy(Game game, Guid playerid)
-        {
-            if (game.player1.id == playerid)
-            {
 
-                for (int i = game.field1.monsterfieldCount - 1; i >= 0; i--)
-                {
-                    if (game.field2.monsterfieldCount > 0)
-                    {
-                        MonsterAttack(game, playerid);
-                    }
-                    else if (game.field2.monsterfieldCount == 0)
-                    {
-                        PlayerAttack(game, game.player2.id, game.field1.monsterfield[i].attack);
-                    }
-                    else
-                    {
-                        HoldAttack();
-                    }
-                }
-
-            }
-
-            if (game.player2.id == playerid)
-            {
-
-                for (int i = game.field2.monsterfieldCount - 1; i >= 0; i--)
-                {
-                    if (game.field1.monsterfieldCount > 0)
-                    {
-                        MonsterAttack(game, playerid);
-                    }
-                    else if (game.field1.monsterfieldCount == 0)
-                    {
-                        PlayerAttack(game, game.player1.id, game.field2.monsterfield[i].attack);
-                    }
-                    else
-                    {
-                        HoldAttack();
-                    }
-
-
-                }
-            }
-        }*/
         public void PlayerAttack(Game game, Player player, Player target, int damage, Monster monster)
         {
-            /*if(game.player1.id == targetPlayer)
-            {
-                game.player1.playerHealth.healthCount -= damage;
-            }
-            else if (game.player2.id == targetPlayer)
-            {
-                game.player2.playerHealth.healthCount -= damage;
-            }*/
             monster.OnPlayerAttack(game, player, target);
             target.playerHealth.healthCount -= damage;
         }
