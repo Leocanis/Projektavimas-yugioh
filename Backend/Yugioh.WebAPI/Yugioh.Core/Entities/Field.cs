@@ -119,7 +119,10 @@ namespace Yugioh.Core.Entities
             {
                 return c;
             }
-            c.OnDeath(game, player, enemy);
+            if( player!=null)
+            {
+                c.OnDeath(game, player, enemy);
+            }
             for (int i = index; i < monsterfield.Length - 1; i++)
             {
                 monsterfield[i] = monsterfield[i + 1];

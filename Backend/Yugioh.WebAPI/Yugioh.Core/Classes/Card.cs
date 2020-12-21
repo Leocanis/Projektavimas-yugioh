@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Yugioh.Core.Enums;
+using Yugioh.Core.Entities;
 
 namespace Yugioh.Core.Classes
 {
@@ -38,6 +39,7 @@ namespace Yugioh.Core.Classes
         {
             return defense;
         }
-
+        public virtual void OnPlay(Entities.Game game, Player player, Player enemy) { }
+        public virtual void OnDeath(Entities.Game game, Player player, Player enemy) { }
     }
 }

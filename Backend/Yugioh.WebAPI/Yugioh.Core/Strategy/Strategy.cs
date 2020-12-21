@@ -4,6 +4,7 @@ using System.Text;
 using Yugioh.Core.Classes;
 using Yugioh.Core.Entities;
 using Yugioh.Core.Iterator;
+using Yugioh.Core.Visitor;
 namespace Yugioh.Core.Strategy
 {
     public class Strategy
@@ -78,15 +79,17 @@ namespace Yugioh.Core.Strategy
         public void MonsterAttack(Game game, Player player, Player enemy, Monster monster, int monsterindex1, int monsterindex2)
         {
             monster.OnAttack(game, player, enemy);
-            game.field1.removeCardFromMonsterField(monsterindex1, game, player, enemy);
-            game.field2.removeCardFromMonsterField(monsterindex2, game, player, enemy);
+            FieldVisitor.removeCardFromField(monsterindex1, game, player, enemy, game.field1.monsterfield, ref game.field1.monsterfieldCount);
+            FieldVisitor.removeCardFromField(monsterindex2, game, enemy, player, game.field2.monsterfield, ref game.field2.monsterfieldCount);
+            //game.field1.removeCardFromMonsterField(monsterindex1, game, player, enemy);
+            //game.field2.removeCardFromMonsterField(monsterindex2, game, player, enemy);
         }
-        public void MonsterAttack(Game game, Player player, Player enemy, Monster monster)
+        /*public void MonsterAttack(Game game, Player player, Player enemy, Monster monster)
         {
             monster.OnAttack(game, player, enemy);
             game.field1.removeCardFromMonsterField(game.field1.monsterfieldCount - 1, game, player, enemy);
             game.field2.removeCardFromMonsterField(game.field2.monsterfieldCount - 1, game, player, enemy);
-        }
+        }*/
         public void HoldAttack()
         {
 

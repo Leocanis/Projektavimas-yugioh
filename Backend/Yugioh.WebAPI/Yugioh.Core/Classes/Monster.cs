@@ -13,8 +13,8 @@ namespace Yugioh.Core.Classes
             this.attack = 50*r.Next(2,6);
             this.defense = 100;
         }
-        public virtual void OnDeath(Entities.Game game, Player player, Player enemy) { }
-        public virtual void OnPlay(Entities.Game game, Player player, Player enemy) { }
+        public override void OnDeath(Entities.Game game, Player player, Player enemy) { }
+        public override void OnPlay(Entities.Game game, Player player, Player enemy) { }
         public virtual void OnAttack(Entities.Game game, Player player, Player enemy) { }
         public virtual void OnHold(Entities.Game game, Player player, Player enemy) { }
         public virtual void OnPlayerAttack(Entities.Game game, Player player, Player enemy) { }
